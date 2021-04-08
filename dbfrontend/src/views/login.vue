@@ -49,6 +49,9 @@ export default {
                 }
       }
     },
+    created () {
+        document.title = this.$route.meta.title;
+    },
     methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {

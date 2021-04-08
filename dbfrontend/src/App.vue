@@ -4,4 +4,3 @@
     <router-view :key="$route.fullPath" /><!-- เปลี่ยนไปตาม router ที่ตั้งไว้ -->
   </div>
 </template>
-
