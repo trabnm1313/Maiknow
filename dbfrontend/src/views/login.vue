@@ -7,29 +7,29 @@
             <div class="container has-text-centered">
                 <div class="column is-10 is-offset-1">
                     <div class="box">
-                        <div class="columns">
+                        <div class="columns is-centered is-vcentered is-mobil">
                              <div class="column is-three-fifths">
                                     <div class="title" id="welcome-text">Welcome to <br> Prosthetic & Orthotic Manage System</div>
                                     <img id="img-column" :src="require('../assets/new.png')">
                             </div>
-                            <div class="column" id="textbox">
-                                <form >
+                            <div class="column">
+                                <form>
                                     <div class="title" id="user-text">USER LOGIN</div>
                                     <div class="field">
                                         <div class="control">
-                                            <input class="input is-large" type="text" name="username" v-model="input.username" placeholder="Username" />
+                                            <input class="input is-medium" type="text" name="username" v-model="input.username" placeholder="Username" />
                                         </div>
                                     </div>
                                     <div class="field">
                                         <div class="control">
-                                            <input class="input is-large" type="password" name="password" v-model="input.password" placeholder="Password" />
+                                            <input class="input is-medium" type="password" name="password" v-model="input.password" placeholder="Password" />
                                         </div>
                                     </div>
-                                    <button type="button" class="button is-block is-danger is-large is-fullwidth" @click="login()">Login</button>
-                                    </form>
+                                    <button type="button" class="button has-text-white is-rounded is-centered is-medium" @click="login()">LOGIN</button>
+                                </form>
                             </div>
-                        </div>
-                    </div>        
+                        </div>        
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +53,6 @@ export default {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
                     if(this.input.username == 'it62070019' && this.input.password == 123456){
-                        alert('correct')
                         this.$router.replace({ name: "home" });
                     } else {
                         alert("username และ password ไม่ตรงกัน");
@@ -101,5 +100,12 @@ export default {
     #img-column{
         width: 630px;
         height: 408px;
+    }
+    .field{
+        margin: 50px;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    }
+    button{
+        width: 200px;
     }
 </style>
