@@ -5,13 +5,13 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: () => import('../views/login.vue'),
     meta: {title: 'Login - Prosthetic & Orthotic Manage System'}
   },
   {
-      path: "/home",
+      path: "/",
       name: "home",
       component: () => import('../views/home.vue'),
       meta: {title: 'Home - Prosthetic & Orthotic Manage System'}

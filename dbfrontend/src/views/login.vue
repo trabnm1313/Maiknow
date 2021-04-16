@@ -1,8 +1,5 @@
 <template>
     <div id="login" class="hero is-fullheight" :style="{ backgroundImage: 'url(' + require('@/assets/bg.png') + ')' }">
-        <div class="wrapper">
-            <div class="wave1"></div>
-        </div>
         <div class="hero-body">
             <div class="container has-text-centered">
                 <div class="column is-10 is-offset-1">
@@ -15,16 +12,23 @@
                             <div class="column">
                                 <form>
                                     <div class="title" id="user-text">USER LOGIN</div>
-                                    <div class="field">
+                                    <div class="field my-6">
                                         <div class="control">
-                                            <input class="input is-medium" type="text" name="username" v-model="input.username" placeholder="Username" />
+                                            <input class="input is-medium {'is-danger' : error}" type="text" name="username" v-model="input.username" placeholder="Username" />
                                         </div>
                                     </div>
-                                    <div class="field">
+                                    <div class="field my-4">
                                         <div class="control">
-                                            <input class="input is-medium" type="password" name="password" v-model="input.password" placeholder="Password" />
+                                            <input class="input is-medium {'is-danger' : error}" type="password" name="password" v-model="input.password" placeholder="Password" />
+                                            <p class="help is-danger" v-if="error">{{errorMsg}}</p>
                                         </div>
                                     </div>
+                                    <div class="field my-5 has-text-right" id="forgot">
+                                        <div class="control">
+                                            <a href="#">Forgot your password?</a>
+                                        </div>
+                                    </div>
+                                    
                                     <button type="button" class="button has-text-white is-rounded is-centered is-medium" @click="login()">LOGIN</button>
                                 </form>
                             </div>
@@ -38,7 +42,7 @@
 
 <script>
 
-// import axios from "axios";
+import axios from "axios";
 export default {
     name: 'Login',
     data() {
@@ -46,7 +50,9 @@ export default {
           input: {
                     username: "",
                     password: ""
-                }
+                },
+            errorMsgUser: '',
+            error: false,
       }
     },
     created () {
@@ -55,16 +61,37 @@ export default {
     methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
-                    if(this.input.username == 'it62070019' && this.input.password == 123456){
+                    axios
+                    .post("http://localhost:3000/login", this.input)
+                    .then((response) => {
+                        this.saveLocal(response.data.auth)
                         this.$router.replace({ name: "home" });
-                    } else {
-                        alert("username และ password ไม่ตรงกัน");
-                    }
+                        this.error = true
+                    })
+                    .catch((err) => {
+                        this.error = false
+                        this.errorMsg = "username และ password ไม่ตรงกัน"
+                        console.log(err);
+                    }); 
                 } else {
-                    alert("กรุณากรอก username และ password ");
+                    this.error = false
+                    this.errorMsg = "กรุณากรอก username และ password "
                 }
+            },
+            saveLocal(value) {
+                const user = { auth: value }
+                var myJ = JSON.stringify(user);
+                localStorage.setItem("user", myJ)
+            },
+            readLocal() {
+                var txt = localStorage.getItem("user");
+                var obj = JSON.parse(txt);
+                return obj
+            },
+            removeLocal() {
+                localStorage.removeItem("user")
             }
-        }
+    }
   }
 </script>
 
@@ -73,7 +100,7 @@ export default {
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: 100% 100%;
-        font-family: 'K2D' , serif;;
+        font-family: 'K2D' , serif;
         position: relative;
     }
     .button{
@@ -101,14 +128,17 @@ export default {
         color: #BA9657;
     }
     #img-column{
-        width: 630px;
-        height: 408px;
+        max-width: 100%;
+         height: auto;
     }
     .field{
-        margin: 50px;
         box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     }
     button{
         width: 200px;
+    }
+    #forgot{
+        box-shadow: none;
+        color: #385B56;
     }
 </style>
