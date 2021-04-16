@@ -65,7 +65,7 @@ export default {
                     .post("http://localhost:3000/login", this.input)
                     .then((response) => {
                         this.saveLocal(response.data.auth)
-                        this.$router.replace({ name: "home" });
+                        this.$router.replace({ name: "dashboard" });
                         this.error = true
                     })
                     .catch((err) => {

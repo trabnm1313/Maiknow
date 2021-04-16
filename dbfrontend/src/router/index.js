@@ -11,11 +11,47 @@ const routes = [
     meta: {title: 'Login - Prosthetic & Orthotic Manage System'}
   },
   {
-      path: "/",
-      name: "home",
-      component: () => import('../views/home.vue'),
-      meta: {title: 'Home - Prosthetic & Orthotic Manage System'}
+      path: "/menu",
+      name: "menu",
+      component: () => import('../views/menu.vue'),
+  },
+  {
+      path: "/dashboard",
+      name: "dashboard",
+      component: () => import('../views/dashboard.vue'),
+      meta: {title: 'Dashboard - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/manageCase",
+      name: "manageCase",
+      component: () => import('../views/manageCase.vue'),
+      meta: {title: 'Manage Case - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/managePatient",
+      name: "managePatient",
+      component: () => import('../views/managePatient.vue'),
+      meta: {title: 'Manage Patient - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/community",
+      name: "community",
+      component: () => import('../views/community.vue'),
+      meta: {title: 'Community - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/editProfile",
+      name: "editProfile",
+      component: () => import('../views/editProfile.vue'),
+      meta: {title: 'Edit Profile - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/changePassword",
+      name: "changePassword",
+      component: () => import('../views/changePassword.vue'),
+      meta: {title: 'Change Password - Prosthetic & Orthotic Manage System'}
   }
+  
 ]
 
 const router = new VueRouter({
