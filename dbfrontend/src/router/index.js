@@ -11,11 +11,6 @@ const routes = [
     meta: {title: 'Login - Prosthetic & Orthotic Manage System'}
   },
   {
-      path: "/menu",
-      name: "menu",
-      component: () => import('../views/menu.vue'),
-  },
-  {
       path: "/dashboard",
       name: "dashboard",
       component: () => import('../views/dashboard.vue'),

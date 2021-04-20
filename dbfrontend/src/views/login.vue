@@ -62,15 +62,26 @@ export default {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
                     axios
-                    .post("http://localhost:3000/login", this.input)
+                    .post("http://localhost:3000/login", this.input
+                    // , {
+                    //     headers: {
+                    //         'accessToken': this.getLocal()
+                    //         }
+                    //     }
+                    )
                     .then((response) => {
-                        this.saveLocal(response.data.auth)
-                        this.$router.replace({ name: "dashboard" });
-                        this.error = true
+                        console.log(response)
+                        // if(response.status == 200){
+                        //     this.saveLocal(response.data.accessToken)
+                        //     this.$router.replace({ name: "dashboard" });
+                        //     this.error = true
+                        // }
                     })
                     .catch((err) => {
-                        this.error = false
-                        this.errorMsg = "username และ password ไม่ตรงกัน"
+                        // if(err.status === 404){
+                        //     this.error = false
+                        //     this.errorMsg = "username และ password ไม่ตรงกัน"
+                        // }
                         console.log(err);
                     }); 
                 } else {
@@ -78,12 +89,12 @@ export default {
                     this.errorMsg = "กรุณากรอก username และ password "
                 }
             },
-            saveLocal(value) {
-                const user = { auth: value }
+            saveLocal(auth) {
+                const user = auth
                 var myJ = JSON.stringify(user);
                 localStorage.setItem("user", myJ)
             },
-            readLocal() {
+            getLocal() {
                 var txt = localStorage.getItem("user");
                 var obj = JSON.parse(txt);
                 return obj
