@@ -10,8 +10,26 @@ const { Patient } = require("./models")
 const { Province } = require("./models")
 const { Staff } = require("./models")
 app.use(express.json())
-app.patch('/update', async (req,res) =>{
-    let data = await Case.update()
+app.patch('/update/:id', async (req,res) =>{
+    let data = await Case.update(
+        req.body,{where: { case_ID:req.params.id }
+    })
+    res.send(data)
+})
+
+app.delete('/delete/:id',async(req,res) =>{ 
+    let data = await Case.findOne({
+        where:{
+            case_ID: req.params.id
+         }
+         
+    }).then(data => {return Case.destroy({
+        where:{
+            case_ID: req.params.id
+        }
+    }).then(()=>{return data}) 
+} )
+    res.send(data)
 })
 
 app.get('/read/:id', async (req, res) => {
