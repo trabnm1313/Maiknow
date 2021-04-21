@@ -1,75 +1,143 @@
 <template>
-            <div id="detail" class="box">
+                <div id="detail" class="box ">
               <div class="columns">
-                <div class="column is-one-third">
-                  <div class="columns">
-                    <label class="text-add">Patient Information</label>
-                  </div>
-                </div>
-                <div class="column">
-                  <div class="columns mb-5">
-                    <label class="text-add">HN : </label>
-                    <input style="color: #385B56; background: #D1C9BC;" type="text" value="10230" disabled>
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Firstname : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="Punpetch">
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Lastname : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="Prakongpak">
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">ID Card : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="ไม่บอก">
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Address : </label>
-                    <textarea style="width: 511px; height: 203px; resize: none; background: #FFF8EE; color: #385B56;"></textarea>
-                  </div>
-                  <div class="columns mt-5 mb-5">
-                    <label class="text-add">D.O.B : </label>
-                    <input style="background: #FFF8EE; color: #385B56" type="date">
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Age : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="19" disabled>
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Nationality : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="Thai">
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Religion : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="Asian">
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Occupation : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="นศ.">
-                  </div>
-                  <div class="columns mb-5 mt-5">
-                    <label class="text-add">Office Name : </label>
-                    <input style="color: #385B56; background: #FFF8EE;" type="text" value="KMITL">
-                  </div>
-                  <div class="columns mt-5 is-pulled-right">
-                    <button class="button is-rounded mr-3"  style="background: #BA9657; color: #FFFFFF">Cancel</button>
-                    <button class="button is-rounded" style="background: #385B56; color: #FFFFFF">Comfirm</button>
-                  </div>
-                </div>
+                <div class="column is-4">
+                  <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt">
               </div>
+              <div class="column is-1">
+                  <span class="mr-4 textHeader">Filter</span>
+                  </div>
+                <div class="column is-4">
+                  <div class="select is-rounded is-small" style="width: 280px">
+                    <select style="width: 280px" v-model="selectFilter">
+                      <option value="0">Patient Name</option>
+                      <option value="1">With options</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="column is-2 ">
+                  <h1 class="has-text-centered textHeader">PAGE {{page}}/10</h1>
+                </div>
             </div>
+                <div class="scroll">
+                     <table class="table is-fullwidth" >
+               <thead style="background-color:#BA9657;">
+                  <tr>
+                     <th class="has-text-white">HN</th>
+                     <th class="has-text-white">Firstname</th>
+                     <th class="has-text-white">Lastname</th>
+                     <th class="has-text-white">Address</th>
+                     <th class="has-text-white">D.O.B</th>
+                     <th class="has-text-white">Age</th>
+                     <th class="has-text-white">ID Card</th>
+                     <th class="has-text-white">Nationality</th>
+                     <th class="has-text-white">Religion</th>
+                     <th class="has-text-white">Occupation</th>
+                     <th class="has-text-white">Office Name</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr v-for="(patient, key) in patients" :key="key">
+                     <td>{{patient.hn}}</td>
+                     <td>{{patient.fname}}</td>
+                     <td>{{patient.lname}}</td>
+                     <td>{{patient.address}}</td>
+                     <td>{{patient.dob}}</td>
+                     <td>{{patient.age}}</td>
+                     <td>{{patient.idCard}}</td>
+                     <td>{{patient.nationality}}</td>
+                     <td>{{patient.religion}}</td>
+                     <td>{{patient.occupation}}</td>
+                     <td>{{patient.office}}</td>
+                  </tr>
+                  
+               </tbody>
+            </table>
+            </div>
+            <button id="btn" class="button is-rounded mr-3"  style="background: #BA9657; color: #FFFFFF" @click="$router.replace({ name: 'addPatient' });">Add Patient</button>
+                </div>
 </template>
 
+<script>
+export default {
+    name: 'home',
+    data() {
+      return {
+        page: 1,
+        prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
+        patients:[{hn:'1', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
+        {hn:'2', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
+        {hn:'3', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
+        {hn:'4', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
+        ],
+        selectFilter: '0',
+        searchTxt: '',
+    created () {
+        document.title = this.$route.meta.title;
+    },
+    methods: {
+        }
+      }
+    }
+  }
+</script>
+
 <style scoped>
-.text-add{
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 33px;
-  color: #385B56;
+  #home{
+    font-family: 'K2D' , serif;
+    background-color:#385B56;
+  }
+  .box{
+    height: 100%;
+  }
+  .table{
+      background-color: #E2D8C9;
+  }
+  #detail{
+    background-color: #ded7c8;
+  }
+  input#search{
+    background-position: 8%;
+    background-image: url("../assets/search.png");
+    background-size:7%;
+    background-repeat: no-repeat;
+    text-indent: 13%;
+  }
+  input::placeholder{
+    font-size: 16px;
+  }
+  .textHeader{
+    font-weight: 500;
+    font-size: 22px;
+    color: #385B56;
+  }
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #cfcfcf;
+  }
+#btn{
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
 }
-.box{
-  background-color: #E2D8C9;
+.scroll {
+    overflow-y: auto;
+    
+        }
+/* width */
+::-webkit-scrollbar {
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 15px #BA9657; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #BA9657; 
+  border-radius: 5px;
 }
 
 </style>

@@ -22,6 +22,7 @@
     <table class="table is-fullwidth" >
       <thead style="background-color:#BA9657;">
       <tr>
+        <th class="has-text-white"></th>
         <th class="has-text-white">Case ID</th>
         <th class="has-text-white">Firstname</th>
         <th class="has-text-white">Lastname</th>
@@ -32,10 +33,10 @@
         <th class="has-text-white">Hospital</th>
       </tr>
       </thead>
-      <template v-for="(caseInfo, key) in caseInfo" >
-      <tbody v-if="caseInfo.isShare" :key="key">
-        <tr>
-        <td>{{caseInfo.caseID}} </td>
+      <tbody>
+      <tr v-for="(caseInfo, key) in caseInfo" :key="key">
+        <td><input v-model="caseInfo.isShare" class="checkbox" type="checkbox"></td>
+        <td>{{caseInfo.caseID}}</td>
         <td>{{caseInfo.fname}}</td>
         <td>{{caseInfo.lname}}</td>
         <td>{{caseInfo.details}}</td>
@@ -44,11 +45,11 @@
         <td>{{caseInfo.prosthesis}}</td>
         <td>{{caseInfo.hospital}}</td>
       </tr>
+
       </tbody>
-      </template>
-      
     </table>
-      <button @click="$router.replace({name: 'shareCase'});" id="btn" class="button is-rounded mr-3"  style="background: #BA9657; color: #FFFFFF">Add Case</button>
+    <button @click="$router.replace({name: 'community'});" class="button is-rounded " id="btn" style="background: #385B56; color: #FFFFFF">Cancel</button>
+    <button @click="$router.replace({name: 'community'});" class="button is-rounded" id="btn2" style="background: #BA9657; color: #FFFFFF">Comfirm</button>
   </div>
 </template>
 
@@ -132,6 +133,11 @@ input::placeholder{
   border-color: #cfcfcf;
 }
 #btn{
+  position: absolute;
+  bottom: 2%;
+  right: 9%;
+}
+#btn2{
   position: absolute;
   bottom: 2%;
   right: 1%;

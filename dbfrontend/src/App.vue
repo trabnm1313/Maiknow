@@ -5,12 +5,12 @@
 
     <div v-if="$route.fullPath != '/login'">
       <div id="home" class="hero is-fullheight">
-       <div class="hero-body py-5 pr-6">
-          <div class="container">
+       <div class="hero-body pl-0 pt-2 mb-2 pb-1">
+          <div class="container is-fluid px-0 ">
         <div class="columns">
             <div class="column is-3">
         <aside class="menu">
-                <ul class="menu-list ml-5">
+                <ul class="menu-list ">
                     <li class="mb-6">
                     <div class="columns is-vcentered">
                         <div class="column mt-4" id="pro">
@@ -41,7 +41,7 @@
                     <label class="menu-text">Community</label>
                     </li></a>
                 </ul>
-                <ul class="menu-list ml-5" style="margin-top: 40%">
+                <ul class="menu-list" style="margin-top: 20%">
                     <a @click="$router.replace({ name: 'editProfile' });">
                     <li class="mb-3 columns is-vcentered">
                     <img class="menu-img mx-3 " src="@/assets/edituser.png">
@@ -92,7 +92,7 @@ export default {
   #imgPro{
     position: absolute;
     top: -29px;
-    left: 1.5%;
+    left: 0.5%;
     max-width: 80px;
     height:80px;
   }
@@ -124,7 +124,7 @@ export default {
   }
   a:hover {
     background-color: #253D39 !important;
-    border-radius: 15px 50px 50px 15px;
+    border-radius: 0px 50px 50px 0px;
     }
   #menu-bottom{
     margin-top: auto;

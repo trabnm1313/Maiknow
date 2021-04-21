@@ -45,6 +45,24 @@ const routes = [
       name: "changePassword",
       component: () => import('../views/changePassword.vue'),
       meta: {title: 'Change Password - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/addCase",
+      name: "addCase",
+      component: () => import('../views/addCase.vue'),
+      meta: {title: 'Add Case - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/addPatient",
+      name: "addPatient",
+      component: () => import('../views/addPatient.vue'),
+      meta: {title: 'Add Patient - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/shareCase",
+      name: "shareCase",
+      component: () => import('../views/shareCase.vue'),
+      meta: {title: 'Add Patient - Prosthetic & Orthotic Manage System'}
   }
   
 ]
