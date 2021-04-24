@@ -58,9 +58,51 @@
           </div>
         </div>
         <div id="btn">
-          <button class="button is-rounded mr-3"  style="background: #BA9657; color: #FFFFFF; font-weight: bold">Cancel</button>
-          <button class="button is-rounded" style="background: #385B56; color: #FFFFFF; font-weight: bold">Comfirm</button>
+          <button @click="modalCancel = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
+          <button @click="modalComfirm = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Update</button>
         </div>
+      </div>
+    </div>
+    <div class="modal" :class="{'is-active': modalCancel}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <div class="columns is-vcentered">
+            <div class="column has-text-centered modal-text">
+              <p>Are you sure</p>
+              <p>you want to cancel changing password ?</p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <button class="button is-rounded mr-4" @click="$router.replace({ name: 'editProfile' });" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded ml-4" @click="modalCancel = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+    <div class="modal" :class="{'is-active': modalComfirm}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <div class="columns is-vcentered">
+            <div class="column has-text-centered modal-text">
+              <p>Are you sure</p>
+              <p>you want to change password ?</p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <button class="button is-rounded mr-4" @click="$router.replace({ name: 'editProfile' });" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded ml-4" @click="modalComfirm = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   </div>
@@ -71,6 +113,8 @@ export default {
   name: 'home',
   data() {
     return {
+      modalCancel: false,
+      modalComfirm: false,
       page: 1,
       prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
       patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
@@ -155,5 +199,17 @@ export default {
 }
 .is-password{
   width: 50%;
+}
+.modal-card-body
+{
+  background-color: #385B56;
+  color: #E2D8C9;
+}
+.modal-text{
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 35px;
+  text-align: center;
+  color: #E2D8C9;
 }
 </style>

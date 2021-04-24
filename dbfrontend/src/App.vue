@@ -77,11 +77,18 @@
           <div class="modal-card">
             <section class="modal-card-body">
               <!-- Content ... -->
-              Are you sure you want to logout ?
-              <div>
-              <button class="button is-rounded" @click="$router.replace({ name: 'login' });" style="background-color: #BA9657; color: #E2D8C9;">Yes</button>
-              <button class="button is-rounded" @click="modalLogout = false" style="background-color: #253D39; color: #E2D8C9;">No</button>
-            </div>
+              <div class="columns is-vcentered">
+                <div class="column has-text-centered modal-text">
+                  <p>Are you sure</p>
+                  <p>you want to logout ?</p>
+                </div>
+              </div>
+              <div class="columns">
+                <div class="column has-text-centered">
+                <button class="button is-rounded mr-4" @click="$router.replace({ name: 'login' });" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+                <button class="button is-rounded ml-4" @click="modalLogout = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
+                </div>
+              </div>
               </section>
             
           </div>
@@ -101,10 +108,7 @@ export default {
         modalLogout: false,
         
     }
-  },mounted(){
-      let hi = this.$refs.detail.clientHeight
-    console.log(hi)
-    }
+  }
 }
 </script>
 
@@ -152,7 +156,14 @@ export default {
     }
   .modal-card-body
   {
-      background-color: #253D39;
+      background-color: #385B56;
       color: #E2D8C9;
+  }
+  .modal-text{
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #E2D8C9;
   }
 </style>

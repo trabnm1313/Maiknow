@@ -46,7 +46,7 @@
                   
                </tbody>
             </table>
-            <button id="btn" class="button is-rounded mr-3"  style="background: #BA9657; color: #FFFFFF" @click="$router.replace({ name: 'addCase' });">Add Case</button>
+            <button id="btn" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657" @click="$router.replace({ name: 'addCase' });">Add Case</button>
                 </div>
 </template>
 

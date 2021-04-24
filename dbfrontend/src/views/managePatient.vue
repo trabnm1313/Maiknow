@@ -29,7 +29,7 @@
                      <th class="has-text-white">Firstname</th>
                      <th class="has-text-white">Lastname</th>
                      <th class="has-text-white">Address</th>
-                     <th class="has-text-white">D.O.B</th>
+                     <th class="has-text-white">DateOfBirth</th>
                      <th class="has-text-white">Age</th>
                      <th class="has-text-white">ID Card</th>
                      <th class="has-text-white">Nationality</th>
@@ -56,7 +56,7 @@
                </tbody>
             </table>
             </div>
-            <button id="btn" class="button is-rounded mr-3"  style="background: #BA9657; color: #FFFFFF" @click="$router.replace({ name: 'addPatient' });">Add Patient</button>
+            <button id="btn" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657" @click="$router.replace({ name: 'addPatient' });">Add Patient</button>
                 </div>
 </template>
 

@@ -50,7 +50,7 @@
       </template>
       
     </table>
-      <button @click="$router.replace({name: 'shareCase'});" id="btn" class="button is-rounded mr-3"  style="background: #BA9657; color: #FFFFFF">Add Case</button>
+      <button @click="$router.replace({name: 'shareCase'});" id="btn" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Add Case</button>
   </div>
 </template>
 
@@ -142,7 +142,5 @@ input::placeholder{
   width: 19px;
   height: 19px;
 }
-td{
-  border-bottom: 1px solid #BA9657;
-}
+
 </style>
