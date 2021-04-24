@@ -85,7 +85,7 @@
               </div>
               <div class="columns">
                 <div class="column has-text-centered">
-                <button class="button is-rounded mr-4" @click="$router.replace({ name: 'login' });" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+                <button class="button is-rounded mr-4" @click="$router.replace({ name: 'login' }); modalLogout = false;" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
                 <button class="button is-rounded ml-4" @click="modalLogout = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
                 </div>
               </div>
