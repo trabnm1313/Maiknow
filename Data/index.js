@@ -16,89 +16,34 @@ app.use("/province", province)
 //case--------------------------------------------------------------------------------------------------
 const case_ = require("./route/case")
 app.use("/case", case_)
+//claimeType--------------------------------------------------------------------------------------------
+const claimeType = require("./route/claimeType")
+app.use("/claimeType", case_)
+//department--------------------------------------------------------------------------------------------
+const claimeType = require("./route/department")
+app.use("/department", case_)
+//hospitalc---------------------------------------------------------------------------------------------
+const claimeType = require("./route/hospitalc")
+app.use("/hospitalc", case_)
+//hospital----------------------------------------------------------------------------------------------
+const claimeType = require("./route/hospital")
+app.use("/hospital", case_)
+//Patient-----------------------------------------------------------------------------------------------
+const claimeType = require("./route/patient")
+app.use("/patient", case_)
+// staff--------------------------------------------------------------------------------------------------//
+const claimeType = require("./route/staff")
+app.use("/staff", case_)
 
 
 
-// create--------------------------------------------------------------------------------------------------//
 
 
-app.post('/create/claimeType', async (req, res) => {
-    console.log(req.body)
-    let data = await Claim_Type.create({
-        claim_ID: req.body.claim_ID,
-        claim: req.body.claim
-    }).catch((err) => { res.send(err) })
-    res.send(data)
-})
-
-app.post('/create/department', async (req, res) => {
-    console.log(req.body)
-    let data = await Department.create({
-        department_ID: req.body.department_ID,
-        name: req.body.name,
-        hospital_ID: req.body.hospital_ID,
-        supervisor_ID: req.body.supervisor_ID
-    }).catch((err) => { res.send(err) })
-    res.send(data)
-})
-
-app.post('/create/hospitalc', async (req, res) => {
-    console.log(req.body)
-    let data = await Hospital_community.create({
-        community_ID: req.body.community_ID,
-        name: req.body.name,
-        province_ID: req.body.province_ID
-    }).catch((err) => { res.send(err) })
-    res.send(data)
-})
-
-app.post('/create/hospital', async (req, res) => {
-    console.log(req.body)
-    let data = await Hospital.create({
-        hospital_ID: req.body.hospital_ID,
-        name: req.body.name,
-        address: req.body.address,
-        province_ID: req.body.province_ID,
-        community_ID: req.body.community_ID
-    }).catch((err) => { res.send(err) })
-    res.send(data)
-})
-
-app.post('/create/patient', async (req, res) => {
-    console.log(req.body)
-    let data = await Patient.create({
-        hn: req.body.hn,
-        fname: req.body.fname,
-        lname: req.body.lname,
-        address: req.body.address,
-        birth_date: req.body.birth_date,
-        person_id: req.body.person_id,
-        age: req.body.age,
-        nationlity: req.body.nationlity,
-        religion: req.body.religion,
-        occupation: req.body.occupation,
-        office_name: req.body.office_name
-    }).catch((err) => { res.send(err) })
-    res.send(data)
-})
 
 
-app.post('/create/staff', async (req, res) => {
-    console.log(req.body)
-    let data = await Staff.create({
-        staff_ID: req.body.staff_ID,
-        fname: req.body.fname,
-        lname: req.body.lname,
-        address: req.body.address,
-        birth_date: req.body.birth_date,
-        email: req.body.email,
-        phone_number: req.body.phone_number,
-        age: req.body.age,
-        sex: req.body.sex,
-        department_id: req.body.department_id
-    }).catch((err) => { res.send(err) })
-    res.send(data)
-})
+
+
+
 
 
 app.get('/sync', async (req, res) => {
