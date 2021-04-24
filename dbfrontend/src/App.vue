@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=K2D">
 
-    <div v-if="$route.fullPath != '/login'">
+    <div v-if="$route.fullPath != '/login' && $route.fullPath != '/forgotPassword' && $route.fullPath != '/forbiden'  && $route.fullPath != '/notFound'">
       <div id="home" class="hero is-fullheight">
        <div class="hero-body pl-0 pt-2 mb-2 pb-1">
           <div class="container is-fluid px-0 ">
@@ -41,7 +41,8 @@
                     <label class="menu-text">Community</label>
                     </li></a>
                 </ul>
-                <ul class="menu-list" style="margin-top: 20%">
+                <div style="height: 80vh"></div>
+                <ul class="menu-list" id="menu-bottom">
                     <a @click="$router.replace({ name: 'editProfile' });">
                     <li class="mb-3 columns is-vcentered">
                     <img class="menu-img mx-3 " src="@/assets/edituser.png">
@@ -52,7 +53,7 @@
                     <img class="menu-img mx-3" src="@/assets/padlock.png">
                     <label class="menu-text">Change Password</label>
                     </li></a>
-                    <a @click="$router.replace({ name: 'login' });">
+                    <a @click="modalLogout = true">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/exit.png">
                     <label class="menu-text">Log out</label>
@@ -70,15 +71,34 @@
 </div>
 
   <div v-else><router-view :key="$route.fullPath" /></div>
-      
+
+  <div class="modal" :class="{'is-active': modalLogout}">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <section class="modal-card-body">
+              <!-- Content ... -->
+              Are you sure you want to logout ?
+              <div>
+              <button class="button is-rounded" @click="$router.replace({ name: 'login' });" style="background-color: #BA9657; color: #E2D8C9;">Yes</button>
+              <button class="button is-rounded" @click="modalLogout = false" style="background-color: #253D39; color: #E2D8C9;">No</button>
+            </div>
+              </section>
+            
+          </div>
+        </div>
+
   </div>
+  
 </template>
 <script>
 export default {
+  
     name: 'home',
     data() {
       return {
-        prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'}
+        prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
+        modalLogout: false,
+        
     }
   }
 }
@@ -126,7 +146,9 @@ export default {
     background-color: #253D39 !important;
     border-radius: 0px 50px 50px 0px;
     }
-  #menu-bottom{
-    margin-top: auto;
+  .modal-card-body
+  {
+      background-color: #253D39;
+      color: #E2D8C9;
   }
 </style>

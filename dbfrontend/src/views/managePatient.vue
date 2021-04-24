@@ -20,7 +20,7 @@
                 </div>
             </div>
                 <div class="scroll">
-                     <table class="table is-fullwidth" >
+                     <table class="table is-fullwidth fixed"  >
                <thead style="background-color:#BA9657;">
                   <tr>
                      <th class="has-text-white">HN</th>

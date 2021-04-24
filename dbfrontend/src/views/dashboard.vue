@@ -15,7 +15,7 @@
                     </select>
                   </div>
                 </div>
-                <div class="column is-2">
+                <div class="column is-3">
                   <h1 class="has-text-centered textHeader">PAGE {{page}}/10</h1>
                 </div>
             </div>

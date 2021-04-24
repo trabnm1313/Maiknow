@@ -63,6 +63,24 @@ const routes = [
       name: "shareCase",
       component: () => import('../views/shareCase.vue'),
       meta: {title: 'Add Patient - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/forgotPassword",
+      name: "forgotPassword",
+      component: () => import('../views/forgotPassword.vue'),
+      meta: {title: 'Forget Password - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/forbiden",
+      name: "forbiden",
+      component: () => import('../views/forbiden.vue'),
+      meta: {title: 'Forbiden - Prosthetic & Orthotic Manage System'}
+  },
+  {
+      path: "/notFound",
+      name: "notFound",
+      component: () => import('../views/notFound.vue'),
+      meta: {title: 'Not Found - Prosthetic & Orthotic Manage System'}
   }
   
 ]
