@@ -16,7 +16,9 @@
                   </div>
                 </div>
                 <div class="column is-3">
-                  <h1 class="has-text-centered textHeader">PAGE {{page}}/10</h1>
+                  <img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4">
+                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/10</h1>
+                  <img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4">
                 </div>
             </div>
                      <table class="table is-fullwidth" >
@@ -101,6 +103,10 @@ export default {
   }
   .select:not(.is-multiple):not(.is-loading)::after {
     border-color: #cfcfcf;
+  }
+  .arrow{
+    width: 19px;
+    height: 19px;
   }
 
 </style>

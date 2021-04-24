@@ -16,7 +16,9 @@
                   </div>
                 </div>
                 <div class="column is-2 ">
-                  <h1 class="has-text-centered textHeader">PAGE {{page}}/10</h1>
+                  <img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4">
+                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/10</h1>
+                  <img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4">
                 </div>
             </div>
                 <div class="scroll">
@@ -139,5 +141,9 @@ export default {
   background: #BA9657; 
   border-radius: 5px;
 }
+  .arrow{
+    width: 19px;
+    height: 19px;
+  }
 
 </style>
