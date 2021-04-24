@@ -34,7 +34,7 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr v-for="(patient, key) in patients" :key="key">
+                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in patients" :key="key">
                      <td>{{patient.hn}}</td>
                      <td>{{patient.fname}}</td>
                      <td>{{patient.lname}}</td>
@@ -57,7 +57,8 @@ export default {
         page: 1,
         prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
         patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
+                  {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+          {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
                 ],
         selectFilter: '0',
         searchTxt: '',
@@ -107,6 +108,9 @@ export default {
   .arrow{
     width: 19px;
     height: 19px;
+  }
+  td{
+    border-bottom: 1px solid #BA9657;
   }
 
 </style>

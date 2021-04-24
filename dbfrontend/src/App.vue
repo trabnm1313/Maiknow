@@ -91,6 +91,7 @@
   
 </template>
 <script>
+
 export default {
   
     name: 'home',
@@ -100,7 +101,10 @@ export default {
         modalLogout: false,
         
     }
-  }
+  },mounted(){
+      let hi = this.$refs.detail.clientHeight
+    console.log(hi)
+    }
 }
 </script>
 

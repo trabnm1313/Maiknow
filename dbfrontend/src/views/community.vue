@@ -36,7 +36,7 @@
       </thead>
       <template v-for="(caseInfo, key) in caseInfo" >
       <tbody v-if="caseInfo.isShare" :key="key">
-        <tr>
+        <tr style="border-bottom: 1px solid #BA9657;">
         <td>{{caseInfo.caseID}} </td>
         <td>{{caseInfo.fname}}</td>
         <td>{{caseInfo.lname}}</td>
@@ -142,5 +142,7 @@ input::placeholder{
   width: 19px;
   height: 19px;
 }
-
+td{
+  border-bottom: 1px solid #BA9657;
+}
 </style>

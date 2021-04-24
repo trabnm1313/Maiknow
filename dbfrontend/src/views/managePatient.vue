@@ -39,7 +39,7 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr v-for="(patient, key) in patients" :key="key">
+                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in patients" :key="key">
                      <td>{{patient.hn}}</td>
                      <td>{{patient.fname}}</td>
                      <td>{{patient.lname}}</td>
@@ -144,6 +144,9 @@ export default {
   .arrow{
     width: 19px;
     height: 19px;
+  }
+  td{
+    border-bottom: 1px solid #BA9657;
   }
 
 </style>

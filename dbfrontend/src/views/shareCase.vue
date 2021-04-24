@@ -36,7 +36,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="(caseInfo, key) in caseInfo" :key="key">
+      <tr style="border-bottom: 1px solid #BA9657;" v-for="(caseInfo, key) in caseInfo" :key="key">
         <td><input v-model="caseInfo.isShare" class="checkbox" type="checkbox"></td>
         <td>{{caseInfo.caseID}}</td>
         <td>{{caseInfo.fname}}</td>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'home',
   data() {
@@ -147,6 +148,9 @@ input::placeholder{
 .arrow{
   width: 19px;
   height: 19px;
+}
+td{
+  border-bottom: 1px solid #BA9657;
 }
 
 </style>
