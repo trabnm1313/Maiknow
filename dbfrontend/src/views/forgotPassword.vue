@@ -36,9 +36,6 @@ export default {
             errorMsgUser: '',
             error: false,
       }
-    },
-    created () {
-        document.title = this.$route.meta.title;
     }
   }
 </script>

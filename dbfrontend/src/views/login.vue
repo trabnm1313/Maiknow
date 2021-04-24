@@ -14,18 +14,20 @@
                                     <div class="title" id="user-text">USER LOGIN</div>
                                     <div class="field my-6">
                                         <div class="control">
-                                            <input class="input is-medium {'is-danger' : error}" type="text" name="username" v-model="input.username" placeholder="Username" />
+                                            <input :class="{'is-danger' : error}" class="input is-medium" type="text" name="username" v-model="input.username" placeholder="Username" />
                                         </div>
                                     </div>
                                     <div class="field my-4">
                                         <div class="control">
-                                            <input class="input is-medium {'is-danger' : error}" type="password" name="password" v-model="input.password" placeholder="Password" />
-                                            <p class="help is-danger" v-if="error">{{errorMsg}}</p>
+                                            <input :class="{'is-danger' : error}" class="input is-medium" type="password" name="password" v-model="input.password" placeholder="Password" />
                                         </div>
                                     </div>
+                                    
+                                        <p class="help is-danger" v-if="error">{{errorMsgUser}}</p>
+                                    
                                     <div class="field my-5 has-text-right" id="forgot">
                                         <div class="control">
-                                            <a href="#">Forgot your password?</a>
+                                            <a @click="$router.replace({ name: 'forgotPassword' })">Forgot your password?</a>
                                         </div>
                                     </div>
                                     
@@ -55,9 +57,6 @@ export default {
             error: false,
       }
     },
-    created () {
-        document.title = this.$route.meta.title;
-    },
     methods: {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
@@ -71,22 +70,23 @@ export default {
                     )
                     .then((response) => {
                         console.log(response)
-                        // if(response.status == 200){
-                        //     this.saveLocal(response.data.accessToken)
-                        //     this.$router.replace({ name: "dashboard" });
-                        //     this.error = true
-                        // }
+                        if(response.status == 200){
+                            this.saveLocal(response.data.accessToken)
+                            this.$router.replace({ name: "dashboard" });
+                            this.error = false
+                        }
                     })
                     .catch((err) => {
-                        // if(err.status === 404){
-                        //     this.error = false
-                        //     this.errorMsg = "username และ password ไม่ตรงกัน"
-                        // }
-                        console.log(err);
+                        if(err.request.status === 404){
+                            this.error = true
+                            this.errorMsgUser = "username และ password ไม่ตรงกัน"
+                        }
+                        console.log(err)
+                        console.log('ERROR2: ', err.request.status)
                     }); 
                 } else {
-                    this.error = false
-                    this.errorMsg = "กรุณากรอก username และ password "
+                    this.error = true
+                    this.errorMsgUser = "กรุณากรอก username และ password "
                 }
             },
             saveLocal(auth) {

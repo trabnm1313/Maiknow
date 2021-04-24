@@ -194,9 +194,6 @@ export default {
     return {
       modalCancel: false,
       modalComfirm: false,
-      created () {
-        document.title = this.$route.meta.title;
-      },
       methods: {
 
       }

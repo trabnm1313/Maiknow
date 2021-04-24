@@ -135,9 +135,6 @@ export default {
       ],
       selectFilter: '0',
       searchTxt: '',
-      created () {
-        document.title = this.$route.meta.title;
-      },
       methods: {
 
       }

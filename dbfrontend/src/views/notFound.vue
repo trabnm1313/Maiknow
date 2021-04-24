@@ -31,9 +31,6 @@ export default {
             error: false,
       }
     },
-    created () {
-        document.title = this.$route.meta.title;
-    }
   }
 </script>
 
