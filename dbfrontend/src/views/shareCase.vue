@@ -179,7 +179,7 @@ input::placeholder{
 #btn{
   position: absolute;
   bottom: 2%;
-  right: 9%;
+  right: 11%;
 }
 #btn2{
   position: absolute;

@@ -1,5 +1,5 @@
 <template>
-                <div id="detail" class="box ">
+                <div id="detail" class="box">
               <div class="columns">
                 <div class="column is-4">
                   <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt">
@@ -10,15 +10,24 @@
                 <div class="column is-4">
                   <div class="select is-rounded is-small" style="width: 280px">
                     <select style="width: 280px" v-model="selectFilter">
-                      <option value="0">Patient Name</option>
-                      <option value="1">With options</option>
+                      <option value="HN">HN</option>
+                      <option value="Firstname">Firstname</option>
+                      <option value="Lastname">Lastname</option>
+                      <option value="Address">Address</option>
+                      <option value="DateOfBirth">DateOfBirth</option>
+                      <option value="Age">Age</option>
+                      <option value="ID Card">ID Card</option>
+                      <option value="Nationality">Nationality</option>
+                      <option value="Religion">Religion</option>
+                      <option value="Occupation">Occupation</option>
+                      <option value="Office Name">Office Name</option>
                     </select>
                   </div>
                 </div>
                 <div class="column is-3 ">
-                  <img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4">
-                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/10</h1>
-                  <img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4">
+                  <a @click="minusPage()"><img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4"></a>
+                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/{{countPage}}</h1>
+                  <a @click="plusPage()"><img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4"></a>
                 </div>
             </div>
                 <div class="scroll">
@@ -66,19 +75,35 @@ export default {
     data() {
       return {
         page: 1,
+        countPage: 10,
         prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
         patients:[{hn:'1', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
         {hn:'2', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
         {hn:'3', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
         {hn:'4', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
+        
         ],
-        selectFilter: '0',
+        selectFilter: 'HN',
         searchTxt: '',
     methods: {
+
+    },
+          plusPage(){
+            if(this.page >= 1 && this.page < 10){
+              this.page++
+            }
+          },
+          minusPage(){
+            if(this.page <= 10 && this.page > 1){
+              this.page--
+            }
+            
+          }
+
         }
       }
     }
-  }
+
 </script>
 
 <style scoped>

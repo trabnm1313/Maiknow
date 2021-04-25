@@ -27,7 +27,7 @@
                                     
                                     <div class="field my-5 has-text-right" id="forgot">
                                         <div class="control">
-                                            <a @click="$router.replace({ name: 'forgotPassword' })">Forgot your password?</a>
+                                            <a @click="$router.replace({ name: 'forgotPassword' })" style="color:#385B56;">Forgot your password?</a>
                                         </div>
                                     </div>
                                     

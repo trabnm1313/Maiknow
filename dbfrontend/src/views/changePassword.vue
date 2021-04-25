@@ -36,7 +36,7 @@
                 <label class="profile-text" style="font-size: 24px;">Old Password :</label>
               </div>
               <div class="column">
-                <input class="input profile-text is-password" type="text">
+                <input class="input profile-text is-password" type="text"  v-model="password">
               </div>
             </div>
             <div class="columns">
@@ -44,7 +44,7 @@
                 <label class="profile-text" style="font-size: 24px;">New Password :</label>
               </div>
               <div class="column">
-                <input class="input profile-text is-password" type="text">
+                <input class="input profile-text is-password" type="text"  v-model="newPassword">
               </div>
             </div>
             <div class="columns">
@@ -52,7 +52,7 @@
                 <label class="profile-text" style="font-size: 24px;">Confirm New Password :</label>
               </div>
               <div class="column">
-                <input class="input profile-text is-password" type="text">
+                <input class="input profile-text is-password" type="text"  v-model="confirmNewPassword">
               </div>
             </div>
           </div>
@@ -115,6 +115,9 @@ export default {
     return {
       modalCancel: false,
       modalComfirm: false,
+      password:'',
+      newPassword:'',
+      confirmNewPassword:'',
       page: 1,
       prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
       patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},

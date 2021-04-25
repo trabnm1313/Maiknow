@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=K2D">
 
-    <div v-if="$route.fullPath != '/login' && $route.fullPath != '/forgotPassword' && $route.fullPath != '/forbiden'  && $route.fullPath != '/notFound'">
+    <div v-if="$route.fullPath != '/' && $route.fullPath != '/forgotPassword' && $route.fullPath != '/forbiden'  && $route.fullPath != '/notFound'">
       <div id="home" class="hero is-fullheight">
        <div class="hero-body pl-0 pt-2 mb-2 pb-1">
           <div class="container is-fluid px-0 ">
@@ -41,7 +41,6 @@
                     <label class="menu-text">Community</label>
                     </li></a>
                 </ul>
-                <div style="height: 80vh"></div>
                 <ul class="menu-list" id="menu-bottom">
                     <a @click="$router.replace({ name: 'editProfile' });">
                     <li class="mb-3 columns is-vcentered">

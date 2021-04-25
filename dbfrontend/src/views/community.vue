@@ -10,15 +10,21 @@
       <div class="column is-4">
         <div class="select is-rounded is-small" style="width: 280px">
           <select style="width: 280px" v-model="selectFilter">
-            <option value="0">Patient Name</option>
-            <option value="1">With options</option>
+                <option value="Case ID">Case ID</option>
+                <option value="Firstname">Firstname</option>
+                <option value="Lastname">Lastname</option>
+                <option value="Details">Details</option>
+                <option value="Claim">Claim</option>
+                <option value="Status">Status</option>
+                <option value="Prosthesis">Prosthesis</option>
+                <option value="Hospital">Hospital</option>
           </select>
         </div>
       </div>
       <div class="column is-3">
-        <img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4">
-        <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/10</h1>
-        <img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4">
+        <a @click="minusPage()"><img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4"></a>
+        <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/{{countPage}}</h1>
+        <a @click="plusPage()"><img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4"></a>
       </div>
     </div>
     <table class="table is-fullwidth" >
@@ -60,6 +66,7 @@ export default {
   data() {
     return {
       page: 1,
+      countPage: 10,
       prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
       patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
         {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
@@ -88,11 +95,21 @@ export default {
           isShare: true
         }
       ],
-      selectFilter: '0',
+      selectFilter: 'Case ID',
       searchTxt: '',
       methods: {
-
-      }
+      },
+          plusPage(){
+            if(this.page >= 1 && this.page < 10){
+              this.page++
+            }
+          },
+          minusPage(){
+            if(this.page <= 10 && this.page > 1){
+              this.page--
+            }
+            
+          }
     }
   }
 }
