@@ -61,19 +61,32 @@ export default {
             login() {
                 if(this.input.username != "" && this.input.password != "") {
                     axios
-                    .post("http://localhost:3000/login", this.input
-                    // , {
-                    //     headers: {
-                    //         'accessToken': this.getLocal()
-                    //         }
-                    //     }
-                    )
+                    .post("http://localhost:3000/login", this.input)
                     .then((response) => {
                         console.log(response)
                         if(response.status == 200){
                             this.saveLocal(response.data.accessToken)
-                            this.$router.replace({ name: "dashboard" });
                             this.error = false
+                            axios.get("http://localhost:3000/",
+                            {
+                                headers: {
+                                    'Authorization': 'Bearer '+ this.getLocal()
+                                            }
+                                })
+                            .then((res) => {
+                                console.log(res)
+                                if(res.status == 200){
+                                    this.$router.replace({ name: "dashboard" })
+                                }
+                            })
+                            .catch((err) => {
+                                if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                                if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                            })
                         }
                     })
                     .catch((err) => {
@@ -98,9 +111,6 @@ export default {
                 var txt = localStorage.getItem("user");
                 var obj = JSON.parse(txt);
                 return obj
-            },
-            removeLocal() {
-                localStorage.removeItem("user")
             }
     }
   }

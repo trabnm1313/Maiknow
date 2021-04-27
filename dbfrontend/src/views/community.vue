@@ -30,6 +30,7 @@
     <table class="table is-fullwidth" >
       <thead style="background-color:#BA9657;">
       <tr>
+        <th v-show="isAdd"></th>
         <th class="has-text-white">Case ID</th>
         <th class="has-text-white">Firstname</th>
         <th class="has-text-white">Lastname</th>
@@ -43,6 +44,7 @@
       <template v-for="(caseInfo, key) in caseInfo" >
       <tbody v-if="caseInfo.isShare" :key="key">
         <tr style="border-bottom: 1px solid #BA9657;">
+        <td  v-show="isAdd"><input v-model="caseInfo.isShare" class="checkbox" type="checkbox"></td>
         <td>{{caseInfo.caseID}} </td>
         <td>{{caseInfo.fname}}</td>
         <td>{{caseInfo.lname}}</td>
@@ -56,9 +58,58 @@
       </template>
       
     </table>
-    <div class="columns mr-5 go-botton">
+    <div class="columns mr-5 go-botton"  v-show="isAdd == false">
       <div class="column go-botton go-right">
-        <button @click="$router.replace({name: 'shareCase'});" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Add Case</button>
+        <button @click="isAdd = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Add Case</button>
+      </div>
+    </div>
+    <div class="columns mb-0 go-botton" v-show="isAdd">
+      <div class="column go-botton go-right">
+        <button @click="modalCancel = true" class="button is-rounded mr-5" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
+        <button @click="modalCancel = true" class="button is-rounded"  style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
+      </div>
+    </div>
+
+    <div class="modal" :class="{'is-active': modalCancel}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <div class="columns is-vcentered">
+            <div class="column has-text-centered modal-text">
+              <p>Are you sure</p>
+              <p>you want to cancel sharing case ?</p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <button class="button is-rounded mr-4" @click="isAdd = flase" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded ml-4" @click="modalCancel = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+    <div class="modal" :class="{'is-active': modalComfirm}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <div class="columns is-vcentered">
+            <div class="column has-text-centered modal-text">
+              <p>Are you sure</p>
+              <p>you want to share case ?</p>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column has-text-centered">
+              <button class="button is-rounded mr-4" @click="isAdd = flase" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded ml-4" @click="modalComfirm = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   </div>
@@ -71,6 +122,9 @@ export default {
     return {
       page: 1,
       countPage: 10,
+      isAdd: false,
+      modalCancel: false,
+      modalComfirm: false,
       prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
       patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
         {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
@@ -112,7 +166,6 @@ export default {
             if(this.page <= 10 && this.page > 1){
               this.page--
             }
-            
           }
     }
   }

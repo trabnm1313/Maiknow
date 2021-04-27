@@ -71,10 +71,10 @@ const routes = [
       meta: {title: 'Forget Password - Prosthetic & Orthotic Manage System'}
   },
   {
-      path: "/forbiden",
-      name: "forbiden",
-      component: () => import('../views/forbiden.vue'),
-      meta: {title: 'Forbiden - Prosthetic & Orthotic Manage System'}
+      path: "/forbidden",
+      name: "forbidden",
+      component: () => import('../views/forbidden.vue'),
+      meta: {title: 'Forbidden - Prosthetic & Orthotic Manage System'}
   },
   {
       path: "/notFound",

@@ -60,7 +60,7 @@
           <div class="column pb-0 go-botton go-right">
             <div v-if="!isEdit">
               <button @click="isEdit = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Edit Profile</button>
-              <button @click="$router.replace({ name: 'changePassword' });" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Change Password</button>
+              <button @click="pushRouter('changePassword')" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Change Password</button>
             </div>
             <div v-else>
               <button @click="modalComfirm = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
@@ -117,6 +117,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'home',
   data() {
@@ -169,7 +170,34 @@ export default {
       searchTxt: '',
       confirmUpdate(){
           this.modalComfirm = false
-        }
+        },
+          pushRouter(nameRouter){
+          axios.get("http://localhost:3000/",
+                            {
+                                headers: {
+                                    'Authorization': 'Bearer '+ this.getLocal()
+                                            }
+                                })
+                            .then((res) => {
+                                console.log(res)
+                                if(res.status == 200){
+                                    this.$router.replace({ name: nameRouter })
+                                }
+                            })
+                            .catch((err) => {
+                                if(err.request.status === 403 || err.request.status === 400){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                                if(err.request.status === 400){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                            })
+        },
+            getLocal() {
+                var txt = localStorage.getItem("user");
+                var obj = JSON.parse(txt);
+                return obj
+            }
     }
   }
 }

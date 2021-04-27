@@ -20,34 +20,34 @@
                         </div>
                     </div>
                     </li>
-                    <a style="hover" @click="$router.replace({ name: 'dashboard' });">
+                    <a style="hover" @click="pushRouter('dashboard')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/dashboard.png">
                     <lable class="menu-text">Dashboard</lable>
                     </li></a>
-                    <a @click="$router.replace({ name: 'manageCase' });">
+                    <a @click="pushRouter('manageCase')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/pen.png">
                     <label class="menu-text">Manage Case</label>
                     </li></a>
-                    <a @click="$router.replace({ name: 'managePatient' });">
+                    <a @click="pushRouter('managePatient')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/patient.png">
                     <label class="menu-text">Manage Patient</label>
                     </li></a>
-                    <a @click="$router.replace({ name: 'community' });">
+                    <a @click="pushRouter('community')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/communities.png">
                     <label class="menu-text">Community</label>
                     </li></a>
                 </ul>
                 <ul class="menu-list" id="menu-bottom">
-                    <a @click="$router.replace({ name: 'editProfile' });">
+                    <a @click="pushRouter('editProfile')">
                     <li class="mb-3 columns is-vcentered">
                     <img class="menu-img mx-3 " src="@/assets/edituser.png">
                     <label class="menu-text">Edit Profile</label>
                     </li></a>
-                    <a @click="$router.replace({ name: 'changePassword' });">
+                    <a @click="pushRouter('changePassword')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/padlock.png">
                     <label class="menu-text">Change Password</label>
@@ -98,6 +98,7 @@
 </template>
 <script>
 
+import axios from "axios";
 export default {
   
     name: 'home',
@@ -105,6 +106,33 @@ export default {
       return {
         prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
         modalLogout: false,
+        pushRouter(nameRouter){
+          axios.get("http://localhost:3000/",
+                            {
+                                headers: {
+                                    'Authorization': 'Bearer '+ this.getLocal()
+                                            }
+                                })
+                            .then((res) => {
+                                console.log(res)
+                                if(res.status == 200){
+                                    this.$router.replace({ name: nameRouter })
+                                }
+                            })
+                            .catch((err) => {
+                                if(err.request.status === 403 || err.request.status === 400){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                                if(err.request.status === 400){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                            })
+        },
+            getLocal() {
+                var txt = localStorage.getItem("user");
+                var obj = JSON.parse(txt);
+                return obj
+            }
         
     }
   }

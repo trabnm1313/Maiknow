@@ -67,7 +67,7 @@
             </div>
                   <div class="columns mr-5 go-botton">
                     <div class="column go-botton go-right">
-                      <button class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657" @click="$router.replace({ name: 'addPatient' });">Add Patient</button>
+                      <button class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657" @click="pushRouter('addPatient')">Add Patient</button>
                     </div>
                   </div>
 
@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
     name: 'home',
     data() {
@@ -90,9 +91,6 @@ export default {
         ],
         selectFilter: 'HN',
         searchTxt: '',
-    methods: {
-
-    },
           plusPage(){
             if(this.page >= 1 && this.page < 10){
               this.page++
@@ -102,8 +100,34 @@ export default {
             if(this.page <= 10 && this.page > 1){
               this.page--
             }
-            
-          }
+          },
+          pushRouter(nameRouter){
+          axios.get("http://localhost:3000/",
+                            {
+                                headers: {
+                                    'Authorization': 'Bearer '+ this.getLocal()
+                                            }
+                                })
+                            .then((res) => {
+                                console.log(res)
+                                if(res.status == 200){
+                                    this.$router.replace({ name: nameRouter })
+                                }
+                            })
+                            .catch((err) => {
+                                if(err.request.status === 403 || err.request.status === 400){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                                if(err.request.status === 400){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                            })
+        },
+            getLocal() {
+                var txt = localStorage.getItem("user");
+                var obj = JSON.parse(txt);
+                return obj
+            }
 
         }
       }
