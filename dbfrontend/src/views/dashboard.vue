@@ -27,7 +27,7 @@
                   <a @click="plusPage()"><img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4"></a>
                 </div>
             </div>
-                     <table class="table is-fullwidth" >
+                     <table class="table is-fullwidth">
                <thead style="background-color:#BA9657;">
                   <tr>
                      <th class="has-text-white">HN</th>
@@ -52,6 +52,11 @@
                   
                </tbody>
             </table>
+                  <div class="columns mr-5 go-botton">
+                    <div class="column go-botton go-right">
+                      <span class="" style="font-size: 20px;line-height: 20px;color: #BA9657;">Total : {{ patients.length }}</span>
+                    </div>
+                  </div>
                 </div>
 </template>
 
@@ -65,7 +70,8 @@ export default {
         prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
         patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
                   {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
+                  {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+          {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
                 ],
         selectFilter: 'HN',
         searchTxt: '',
@@ -102,6 +108,9 @@ export default {
   }
   #detail{
     background-color: #ded7c8;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
   }
   input#search{
     background-position: 8%;
@@ -127,6 +136,12 @@ export default {
   }
   td{
     border-bottom: 1px solid #BA9657;
+  }
+  .go-botton{
+    margin-top: auto;
+  }
+  .go-right{
+    text-align: right;
   }
 
 </style>

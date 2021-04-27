@@ -1,7 +1,7 @@
 <template>
   <div id="detail" class="box">
     <div class="columns">
-      <div class="column">
+      <div class="column pb-0">
         <div class="columns">
           <div class="column is-one-third">
             <img :src="require('../assets/user.png')" style="width: 234px; height: 234px;">
@@ -42,25 +42,34 @@
           </div>
           <div class="column">
             <label class="profile-text" style="font-size: 24px;">Age :</label>
-            <input id="age" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.age" disabled>
+            <input  class="is-age-count input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.age" disabled>
           </div>
         </div>
         <div class="columns">
-          <div class="column ml-5">
+          <div class="column ml-5 is-half">
             <label class="profile-text" style="font-size: 24px;">Gender :</label>
             <input id="gender" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.gender" :disabled="!isEdit ? true : false">
           </div>
+          <div class="column">
+            <label class="profile-text" style="font-size: 24px;">Amount of Patients :</label>
+            <input class="is-age-count input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" value="999" disabled>
+          </div>
         </div>
-        <div id="btn" v-if="!isEdit">
-          <button @click="isEdit = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Edit Profile</button>
-          <button @click="$router.replace({ name: 'changePassword' });" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Change Password</button>
-        </div>
-        <div id="btn" v-else>
-          <button @click="modalComfirm = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
-          <button @click="modalCancel = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
+          <!--    button    -->
+        <div class="columns mb-0 go-botton">
+          <div class="column pb-0 go-botton go-right">
+            <div v-if="!isEdit">
+              <button @click="isEdit = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Edit Profile</button>
+              <button @click="$router.replace({ name: 'changePassword' });" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Change Password</button>
+            </div>
+            <div v-else>
+              <button @click="modalComfirm = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button @click="modalCancel = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      </div>
 
     <div class="modal" :class="{'is-active': modalCancel}">
       <div class="modal-background"></div>
@@ -172,6 +181,9 @@ export default {
 }
 #detail{
   background-color: #ded7c8;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 }
 .is-name-de{
   width: 80%;
@@ -183,10 +195,10 @@ export default {
   width: 40%;
 }
 #gender{
-  width: 10%;
+  width: 12%;
 }
-#age{
-  width: 10%;
+.is-age-count{
+  width: 8%;
 }
 .is-email-ph{
   width: 50%;
@@ -201,10 +213,11 @@ export default {
 .profile-text{
   color: #385B56;
 }
-#btn{
-  position: absolute;
-  bottom: 2%;
-  right: 1%;
+.go-botton{
+  margin-top: auto;
+}
+.go-right{
+  text-align: right;
 }
 .modal-card-body
 {

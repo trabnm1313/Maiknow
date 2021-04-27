@@ -50,8 +50,12 @@
 
       </tbody>
     </table>
-    <button @click="modalCancel = true" class="button is-rounded " id="btn" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
-    <button @click="modalCancel = true" class="button is-rounded" id="btn2" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
+    <div class="columns mb-0 go-botton">
+      <div class="column go-botton go-right">
+        <button @click="modalCancel = true" class="button is-rounded mr-5" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
+        <button @click="modalCancel = true" class="button is-rounded"  style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
+      </div>
+    </div>
     <div class="modal" :class="{'is-active': modalCancel}">
       <div class="modal-background"></div>
       <div class="modal-card">
@@ -157,6 +161,9 @@ export default {
 }
 #detail{
   background-color: #ded7c8;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 }
 input#search{
   background-position: 8%;
@@ -176,15 +183,11 @@ input::placeholder{
 .select:not(.is-multiple):not(.is-loading)::after {
   border-color: #cfcfcf;
 }
-#btn{
-  position: absolute;
-  bottom: 2%;
-  right: 11%;
+.go-botton{
+  margin-top: auto;
 }
-#btn2{
-  position: absolute;
-  bottom: 2%;
-  right: 1%;
+.go-right{
+  text-align: right;
 }
 .arrow{
   width: 19px;

@@ -52,7 +52,11 @@
                   
                </tbody>
             </table>
-            <button id="btn" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657" @click="$router.replace({ name: 'addCase' });">Add Case</button>
+                  <div class="columns mr-5 go-botton">
+                    <div class="column go-botton go-right">
+                      <button class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657" @click="$router.replace({ name: 'addCase' });">Add Case</button>
+                    </div>
+                  </div>
                 </div>
 </template>
 
@@ -101,6 +105,9 @@ export default {
   }
   #detail{
     background-color: #ded7c8;
+    display: flex;
+    flex-direction: column;
+    flex: auto;
   }
   input#search{
     background-position: 8%;
@@ -120,11 +127,12 @@ export default {
   .select:not(.is-multiple):not(.is-loading)::after {
     border-color: #cfcfcf;
   }
-#btn{
-  position: absolute;
-  bottom: 2%;
-  right: 2%;
-}
+  .go-botton{
+    margin-top: auto;
+  }
+  .go-right{
+    text-align: right;
+  }
   .arrow{
     width: 19px;
     height: 19px;
