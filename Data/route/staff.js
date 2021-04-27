@@ -20,4 +20,29 @@ app.post('/create', async (req, res) => {
     res.send(data)
 })
 
+// read-----------------------------------------------------------------------------------------
+app.get('/read/:id', async (req, res) => {
+    let uu = await Staff.findOne({
+        where: {
+            staff_ID: req.params.id
+        },
+        raw: true
+    })
+    if (uu == null) {
+        res.sendStatus(404)
+        return uu
+    }
+    console.log(req.params)
+    console.log(uu)
+    res.send(uu)
+})
+
+app.get('/read', async (req, res) => {
+    let filter = req.params.filter
+    let data = await Staff.findAll({
+    })
+    res.send(data)
+    console.log(filter)
+})
+
 module.exports = app;

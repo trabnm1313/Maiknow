@@ -29,12 +29,9 @@ app.get('/read/:id', async (req, res) => {
     res.send(uu)
 })
 
-app.get('/readag/:filter&:text', async (req, res) => {
+app.get('/read', async (req, res) => {
     let filter = req.params.filter
     let data = await Province.findAll({
-        where: {
-            filter: req.params.text
-        },
     })
     res.send(data)
     console.log(filter)

@@ -18,22 +18,22 @@ const case_ = require("./route/case")
 app.use("/case", case_)
 //claimeType--------------------------------------------------------------------------------------------
 const claimeType = require("./route/claimeType")
-app.use("/claimeType", case_)
+app.use("/claimeType", claimeType)
 //department--------------------------------------------------------------------------------------------
-const claimeType = require("./route/department")
-app.use("/department", case_)
+const department = require("./route/department")
+app.use("/department", department)
 //hospitalc---------------------------------------------------------------------------------------------
-const claimeType = require("./route/hospitalc")
-app.use("/hospitalc", case_)
+const hospitalc = require("./route/hospitalc")
+app.use("/hospitalc", hospitalc)
 //hospital----------------------------------------------------------------------------------------------
-const claimeType = require("./route/hospital")
-app.use("/hospital", case_)
+const hospitale = require("./route/hospital")
+app.use("/hospital", hospitale)
 //Patient-----------------------------------------------------------------------------------------------
-const claimeType = require("./route/patient")
-app.use("/patient", case_)
+const patient = require("./route/patient")
+app.use("/patient", patient)
 // staff--------------------------------------------------------------------------------------------------//
-const claimeType = require("./route/staff")
-app.use("/staff", case_)
+const staff = require("./route/staff")
+app.use("/staff", staff)
 
 
 
