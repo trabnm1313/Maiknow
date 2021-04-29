@@ -12,7 +12,7 @@
         <aside class="menu">
                 <ul class="menu-list ">
                     <li class="mb-6">
-                    <div class="columns is-vcentered">
+                    <div class="columns is-vcentered" @click="pushRouter('editProfile')">
                         <div class="column mt-4" id="pro">
                           <img class="mt-5" id="imgPro" src="@/assets/user.png">
                         <span id="pro-text" class="f">{{prosthesisAccount.fname}} {{prosthesisAccount.lname}}</span>
@@ -23,39 +23,39 @@
                     <a style="hover" @click="pushRouter('dashboard')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/dashboard.png">
-                    <lable class="menu-text">Dashboard</lable>
+                    <p class="menu-text">Dashboard</p>
                     </li></a>
                     <a @click="pushRouter('manageCase')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/pen.png">
-                    <label class="menu-text">Manage Case</label>
+                    <p class="menu-text">Manage Case</p>
                     </li></a>
                     <a @click="pushRouter('managePatient')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/patient.png">
-                    <label class="menu-text">Manage Patient</label>
+                    <p class="menu-text">Manage Patient</p>
                     </li></a>
                     <a @click="pushRouter('community')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/communities.png">
-                    <label class="menu-text">Community</label>
+                    <p class="menu-text">Community</p>
                     </li></a>
                 </ul>
                 <ul class="menu-list" id="menu-bottom">
                     <a @click="pushRouter('editProfile')">
                     <li class="mb-3 columns is-vcentered">
                     <img class="menu-img mx-3 " src="@/assets/edituser.png">
-                    <label class="menu-text">Edit Profile</label>
+                    <p class="menu-text">Edit Profile</p>
                     </li></a>
                     <a @click="pushRouter('changePassword')">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/padlock.png">
-                    <label class="menu-text">Change Password</label>
+                    <p class="menu-text">Change Password</p>
                     </li></a>
                     <a @click="modalLogout = true">
                     <li class="mb-3 columns is-vcentered" >
                     <img class="menu-img mx-3" src="@/assets/exit.png">
-                    <label class="menu-text">Log out</label>
+                    <p class="menu-text">Log out</p>
                     </li></a>
                 </ul>
                 </aside>

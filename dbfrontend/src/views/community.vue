@@ -58,9 +58,9 @@
       </template>
       
     </table>
-    <div class="columns mr-5 go-botton"  v-show="isAdd == false">
+    <div class="columns mr-5 mb-1 go-botton"  v-show="isAdd == false">
       <div class="column go-botton go-right">
-        <button @click="isAdd = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Add Case</button>
+        <button @click="isAdd = true" class="button is-rounded"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Add Case</button>
       </div>
     </div>
     <div class="columns mb-0 go-botton" v-show="isAdd">

@@ -23,7 +23,7 @@
                 </div>
                 <div class="column is-3">
                   <a @click="minusPage()"><img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4"></a>
-                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/{{countPage}}</h1>
+                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page+1}}/{{countPage}}</h1>
                   <a @click="plusPage()"><img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4"></a>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in patients" :key="key">
+                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in visiblePage" :key="key">
                      <td>{{patient.hn}}</td>
                      <td>{{patient.fname}}</td>
                      <td>{{patient.lname}}</td>
@@ -65,29 +65,51 @@ export default {
     name: 'home',
     data() {
       return {
-        page: 1,
+        page: 0,
         countPage: 10,
+        nextID: 10,
+        pageSize: 8,
         prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
         patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
                   {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-          {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
+                  {hn:'3', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'4', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'5', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'6', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'7', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'8', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'9', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'10', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'11', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'12', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
+                  {hn:'13', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
                 ],
+        visiblePage: [],
         selectFilter: 'HN',
         searchTxt: '',
     methods: {
-
+        
           },
           plusPage(){
-            if(this.page >= 1 && this.page < 10){
+           if(this.page >= 0 && this.page < 10){
               this.page++
-            }
-          },
-          minusPage(){
-            if(this.page <= 10 && this.page > 1){
-              this.page--
+              this.updateShowPage();
             }
             
+          },
+          minusPage(){
+            if(this.page <= 10 && this.page > 0){
+              this.page--
+              this.updateShowPage();
+            } 
+          },
+          updatePage(pageN) {
+            this.page = pageN;
+            this.countPage = this.patients.length/9
+            this.updateShowPage();
+          },
+          updateShowPage() {
+            this.visiblePage = this.patients.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize);
           }
 
         }
