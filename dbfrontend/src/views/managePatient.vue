@@ -83,11 +83,17 @@ export default {
         page: 1,
         countPage: 10,
         prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
-        patients:[{hn:'1', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
-        {hn:'2', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
-        {hn:'3', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
-        {hn:'4', fname:'Review', lname:'Vizz', address:'120 m.3 kashfiushlkagSFDSsdafsgsgfhhdfcs', dob:'14-05-44', age:'19', idCard:'18420287215585',nationality:'thai',religion:'thai',occupation:'ls;fkpshgakejrehguiSg',office:'balakbalak'},
-        
+        patients:[
+        {hn:'000001', fname:'ก้อน', lname:'เหินเวหา', address:'มกส.', dob:'04-05-44', age:'20', idCard:'4523900950236',nationality:'thai',religion:'thai',occupation:'KSU',office:'KSU'},
+        {hn:'000002', fname:'พจน์', lname:'มีเท', address:'มนพ.', dob:'01-08-44', age:'19', idCard:'1229975350236',nationality:'thai',religion:'thai',occupation:'NPU',office:'NPU'},
+        {hn:'000003', fname:'แปลก', lname:'แต่จริง', address:'มนร.', dob:'18-01-44', age:'20', idCard:'8459900950236',nationality:'thai',religion:'thai',occupation:'PNU',office:'PNU'},
+        {hn:'000004', fname:'ปลา', lname:'กระป๋อง', address:'มน.', dob:'26-05-44', age:'19', idCard:'1229900995136',nationality:'thai',religion:'thai',occupation:'NU',office:'NU'},
+        {hn:'000005', fname:'ประกัน', lname:'สูญสิ้นภัย', address:'มมส.', dob:'29-07-44', age:'20', idCard:'1229900974136',nationality:'thai',religion:'thai',occupation:'MSU',office:'MSU'},
+        {hn:'000006', fname:'สายใจ', lname:'สายไหม', address:'จุฬาฯ', dob:'16-03-44', age:'20', idCard:'9549900950236',nationality:'thai',religion:'thai',occupation:'CU',office:'CU'},
+        {hn:'000007', fname:'ลาย', lname:'ไทย', address:'มก.', dob:'30-05-44', age:'19', idCard:'121229900006',nationality:'thai',religion:'thai',occupation:'KU',office:'KU'},
+        {hn:'000008', fname:'ส่อ', lname:'ใช้ปืน', address:'มข.', dob:'11-12-44', age:'19', idCard:'1229789650236',nationality:'thai',religion:'thai',occupation:'KKU',office:'KKU'},
+        {hn:'000009', fname:'ออมตัง', lname:'ไม่มีกิน', address:'มช.', dob:'14-09-44', age:'19', idCard:'1229900950584',nationality:'thai',religion:'thai',occupation:'CMU',office:'CMU'},
+        {hn:'000010', fname:'พัดลม', lname:'ไม่มีใช้', address:'มทษ.', dob:'15-02-44', age:'20', idCard:'1229900635236',nationality:'thai',religion:'thai',occupation:'TSU',office:'TSU'}
         ],
         selectFilter: 'HN',
         searchTxt: '',

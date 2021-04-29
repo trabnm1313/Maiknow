@@ -86,7 +86,7 @@
 <!--          count-->
           <div class="column">
             <label class="profile-text" style="font-size: 24px;">Amount of Patients :</label>
-            <input class="is-age-count input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" value="999" disabled>
+            <input class="is-age-count input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" :value="caseInfo.length" disabled>
           </div>
         </div>
           <!--    button    -->
@@ -160,7 +160,7 @@ export default {
       modalComfirm: false,
       isEdit: false,
       page: 1,
-      prosthesisAccount:{id:'62070019', fname:'Ketsarapron', lname:'Dhetboon', role:'WebFrontend', hospital:'Prosthesis at ABC Hospital, Bangkok', email:'62070019@gmail.com',phone:'000000000',address:'kmitl',dob:'2001-05-14', age:19,gender:'Female'},
+      prosthesisAccount:{id:'620700137', fname:'พาณินี', lname:'ไชยวรณ์', role:'Prosthesis', hospital:'KMITL Hospital', email:'620700137@gmail.com',phone:'0980176332',address:'kmitl',dob:'2001-05-14', age:20,gender:'Female'},
       patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
         {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
       ],
