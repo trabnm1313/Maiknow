@@ -83,7 +83,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="isAdd = flase" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="modalCancel = false; isAdd = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalCancel = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -104,7 +104,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="isAdd = flase" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="modalComfirm = false; isAdd = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalComfirm = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
