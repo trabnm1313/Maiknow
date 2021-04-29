@@ -16,7 +16,7 @@
           <div class="field">
             <div class="column is-3 pl-0 pt-2">
             <div class="control">
-                <input class="input" type="text" style="color: #385B56; background: #D1C9BC; border: #D1C9BC;" value="10230" disabled>
+                <input class="input case-non-dis case-text" type="text" value="10230">
               </div>
             </div>
             </div>
@@ -30,7 +30,7 @@
           <div class="field-body">
             <div class="field">
               <div class="control">
-                <textarea class="textarea" style="resize: none; background: #FFF8EE; color: #385B56;"></textarea>
+                <textarea class="textarea case-non-dis case-text"></textarea>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
           <div class="field">
             <div class="column is-6 pl-0">
             <div class="control">
-                <input class="input" style="color: #385B56; background: #FFF8EE;" type="text">
+                <input class="input case-non-dis case-text" type="text">
               </div>
             </div>
             </div>
@@ -70,7 +70,7 @@
           <div class="field">
             <div class="column is-2 pl-0 pt-1">
             <div class="control">
-                <input class="input" type="text" style="color: #385B56; background: #FFF8EE;">
+                <input class="input case-non-dis case-text" type="text">
               </div>
             </div>
             </div>
@@ -87,7 +87,7 @@
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input" type="text" style="color: #385B56; background: #FFF8EE;">
+                <input class="input case-non-dis case-text" type="text">
               </div>
             </div>
             </div>
@@ -104,7 +104,7 @@
           <div class="field">
             <div class="column pl-0  mt-3">
             <div class="control">
-                <input class="input" type="text" style="color: #385B56; background: #FFF8EE;">
+                <input class="input case-non-dis case-text" type="text">
               </div>
             </div>
             </div>
@@ -116,7 +116,7 @@
     <div class="columns mx-4 my-5 pb-5">
       <div class="columns is-one-third mt-0">
         <div class="column">
-          <label class="text-add">Patient Information</label>
+          <label class="text-add">Prosthesis Information</label>
         </div>
       </div>
 
@@ -128,7 +128,7 @@
           <div class="field">
             <div class="column mt-1 pr-0 pl-0">
             <div class="control">
-                <input class="input" style="color: #385B56; background: #FFF8EE;" type="text" value="123">
+                <input class="input case-non-dis case-text" type="text" value="123">
               </div>
             </div>
             </div>
@@ -223,5 +223,18 @@ export default {
   line-height: 35px;
   text-align: center;
   color: #E2D8C9;
+}
+.case-dis{
+  background: #D1C9BC;
+  border-color: #D1C9BC;
+}
+.case-non-dis{
+  background: #FFF8EE;
+}
+
+.case-text{
+  color: #385B56;
+  font-size: 18px;
+  font-weight: bold;
 }
 </style>

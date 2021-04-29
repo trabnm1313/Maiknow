@@ -82,7 +82,20 @@ const routes = [
       component: () => import('../views/notFound.vue'),
       meta: {title: 'Not Found - Prosthetic & Orthotic Manage System'}
   }
-  
+  ,
+    {
+        path: "/editCase",
+        name: "editCase",
+        component: () => import('../views/editCase.vue'),
+        meta: {title: 'Edit Case - Prosthetic & Orthotic Manage System'}
+    }
+    ,
+    {
+        path: "/editPatient",
+        name: "editPatient",
+        component: () => import('../views/editPatient.vue'),
+        meta: {title: 'Edit Patient - Prosthetic & Orthotic Manage System'}
+    }
 ]
 
 const router = new VueRouter({

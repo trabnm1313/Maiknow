@@ -81,7 +81,7 @@
 <!--          gender-->
           <div class="column ml-5 is-half">
             <label class="profile-text" style="font-size: 24px;">Gender :</label>
-            <input id="gender" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.gender" :disabled="!isEdit ? true : false">
+            <input id="gender" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.gender" disabled>
           </div>
 <!--          count-->
           <div class="column">
@@ -158,7 +158,7 @@ export default {
     return {
       modalCancel: false,
       modalComfirm: false,
-
+      isEdit: false,
       page: 1,
       prosthesisAccount:{id:'62070019', fname:'Ketsarapron', lname:'Dhetboon', role:'WebFrontend', hospital:'Prosthesis at ABC Hospital, Bangkok', email:'62070019@gmail.com',phone:'000000000',address:'kmitl',dob:'2001-05-14', age:19,gender:'Female'},
       patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
