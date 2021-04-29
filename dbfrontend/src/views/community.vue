@@ -217,5 +217,17 @@ input::placeholder{
   width: 19px;
   height: 19px;
 }
+.modal-card-body
+{
+  background-color: #385B56;
+  color: #E2D8C9;
+}
+.modal-text{
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 35px;
+  text-align: center;
+  color: #E2D8C9;
+}
 
 </style>
