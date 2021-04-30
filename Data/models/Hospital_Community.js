@@ -14,6 +14,8 @@ module.exports = (sequelize, Datatype) => {
             allowNull: false
         },
     }, { freezeTableName:true, timestamps:false})
-
+    user.associate = models =>{
+        user.belongsTo(models.Province, {foreignKey:'province_ID'});
+    }
     return user
 }

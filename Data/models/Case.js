@@ -43,9 +43,10 @@ module.exports = (sequelize, Datatype) => {
         },
         share:{
             type: Datatype.BOOLEAN
-
         }
     }, { freezeTableName:true, timestamps:false})
-
+    user.associate = models =>{
+        user.belongsTo(models.Staff, {foreignKey:'staff_ID'});
+    }
     return user
 }

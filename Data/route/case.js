@@ -15,7 +15,8 @@ app.post('/create', async (req, res) => {
         type: req.body.type,
         staff_ID: req.body.staff_ID,
         hn: req.body.hn,
-        claim_ID: req.body.claim_ID
+        claim_ID: req.body.claim_ID,
+        share: req.body.share
     }).catch((err) => { res.send(err) })
     res.send(data)
 })

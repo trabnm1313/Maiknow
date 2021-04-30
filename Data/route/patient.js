@@ -23,19 +23,33 @@ app.post('/create', async (req, res) => {
 
 //read-------------------------------------------------------------------------------------------------
 app.get('/read/:id', async (req, res) => {
-    let uu = await Patient.findOne({
+    let data = await Patient.findOne({
         where: {
             hn: req.params.id
         },
         raw: true
     })
-    if (uu == null) {
+    if (data == null) {
         res.sendStatus(404)
-        return uu
+        return data
     }
+    let d = new Date();
+    console.log('year:',d.getFullYear())
+    console.log('month:',d.getMonth()+1)
+    console.log('day',d.getDate())
+    let age = d.getFullYear()-data.birth_date.getFullYear()
+    if(data.birth_date.getMonth()> d.getMonth()+1 ){
+        age -= 1 
+    }
+    else if(data.birth_date.getMonth() == d.getMonth()+1 ){
+          if(data.birth_date.getDate()> d.getDate()){ 
+                age -= 1  
+            }  
+    }
+    console.log('age:',age)
     console.log(req.params)
-    console.log(uu)
-    res.send(uu)
+    console.log(data)
+    res.send(data)
 })
 
 app.get('/read', async (req, res) => {
