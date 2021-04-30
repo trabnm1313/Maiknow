@@ -11,5 +11,8 @@ module.exports = (sequelize, Datatype) => {
         },
       
     }, { freezeTableName:true, timestamps:false})
-
+    user.associate = models =>{
+        user.hasMany(models.Case, {foreignKey:'claim_ID'});
+       
+    }
     return user}

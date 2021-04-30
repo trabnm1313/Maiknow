@@ -1,3 +1,4 @@
+const { request } = require('express')
 const express = require('express')
 const app = express.Router()
 const { Patient } = require("../models")
@@ -18,6 +19,7 @@ app.post('/create', async (req, res) => {
         occupation: req.body.occupation,
         office_name: req.body.office_name
     }).catch((err) => { res.send(err) })
+    data.addHospital(req.body.hospital_ID, {through :{register_ID: req.body.register_ID ,register_date: new Date()} }).catch((err) => { console.log(err) })
     res.send(data)
 })
 

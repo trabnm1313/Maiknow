@@ -1,5 +1,5 @@
 module.exports = (sequelize, Datatype) => {
-    const user = sequelize.define("Hospital", {
+    const hospital = sequelize.define("hospital", {
         hospital_ID:{
             type: Datatype.STRING,
             primaryKey: true,
@@ -22,6 +22,11 @@ module.exports = (sequelize, Datatype) => {
             allowNull: false
         },
     }, { freezeTableName:true, timestamps:false})
-
-    return user
+    hospital.associate = models =>{
+        hospital.belongsToMany(models.Patient, {foreignKey:'hospital_ID', through: 'hospital_patient'});
+        hospital.belongsTo(models.Province, {foreignKey:'province_ID'});
+        hospital.belongsTo(models.Hospital_community, {foreignKey:'community_ID'});
+        hospital.hasMany(models.Department, {foreignKey:'hospital_ID'});
+    }
+    return hospital
 }

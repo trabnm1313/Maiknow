@@ -1,11 +1,11 @@
 const express = require('express')
 const app = express.Router()
-const { Hospital } = require("../models")
+const { hospital } = require("../models")
 app.use(express.json())
 
 app.post('/create', async (req, res) => {
     console.log(req.body)
-    let data = await Hospital.create({
+    let data = await hospital.create({
         hospital_ID: req.body.hospital_ID,
         name: req.body.name,
         address: req.body.address,
@@ -16,7 +16,7 @@ app.post('/create', async (req, res) => {
 })
 //read-------------------------------------------------------------------------------------------------
 app.get('/read/:id', async (req, res) => {
-    let uu = await Hospital.findOne({
+    let uu = await hospital.findOne({
         where: {
             hospital_ID: req.params.id
         },
@@ -33,7 +33,7 @@ app.get('/read/:id', async (req, res) => {
 
 app.get('/read', async (req, res) => {
     let filter = req.params.filter
-    let data = await Hospital.findAll({
+    let data = await hospital.findAll({
     })
     res.send(data)
     console.log(filter)

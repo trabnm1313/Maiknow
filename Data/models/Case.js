@@ -47,6 +47,8 @@ module.exports = (sequelize, Datatype) => {
     }, { freezeTableName:true, timestamps:false})
     user.associate = models =>{
         user.belongsTo(models.Staff, {foreignKey:'staff_ID'});
+        user.belongsTo(models.hospital_patient, {foreignKey:'register_ID'});     
+        user.belongsTo(models.Claim_Type, {foreignKey:'claim_ID'});
     }
     return user
 }

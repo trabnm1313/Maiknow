@@ -1,5 +1,5 @@
 module.exports = (sequelize, Datatype) => {
-    const user = sequelize.define("Hospital_patient", {
+    const user = sequelize.define("hospital_patient", {
         hospital_ID:{
             type: Datatype.STRING,
             allowNull: false
@@ -18,6 +18,9 @@ module.exports = (sequelize, Datatype) => {
             allowNull: false
         }
     }, { freezeTableName:true, timestamps:false})
-
+    user.associate = models =>{
+        user.hasMany(models.Case, {foreignKey:'register_ID'});
+        
+    }
     return user
 }
