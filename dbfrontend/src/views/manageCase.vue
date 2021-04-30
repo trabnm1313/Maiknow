@@ -30,24 +30,24 @@
                      <table class="table is-fullwidth" >
                <thead style="background-color:#BA9657;">
                   <tr>
-                     <th class="has-text-white">HN</th>
+                     <th class="has-text-white">Case ID</th>
                      <th class="has-text-white">Firstname</th>
                      <th class="has-text-white">Lastname</th>
-                     <th class="has-text-white">Last Appointment</th>
+                     <th class="has-text-white">Detail</th>
                      <th class="has-text-white">Claim</th>
                      <th class="has-text-white">Status</th>
                      <th class="has-text-white">Prosthesis</th>
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in patients" :key="key">
-                     <td>{{patient.hn}}</td>
-                     <td>{{patient.fname}}</td>
-                     <td>{{patient.lname}}</td>
-                     <td>{{patient.lastAppointment}}</td>
-                     <td>{{patient.claim}}</td>
-                     <td>{{patient.status}}</td>
-                     <td>{{patient.prosthesis}}</td>
+                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(caseInfo, key) in caseInfo" :key="key">
+                     <td>{{caseInfo.caseID}}</td>
+                     <td>{{caseInfo.fname}}</td>
+                     <td>{{caseInfo.lname}}</td>
+                     <td>{{caseInfo.detail}}</td>
+                     <td>{{caseInfo.claim}}</td>
+                     <td>{{caseInfo.status}}</td>
+                     <td>{{caseInfo.prosthesis}}</td>
                   </tr>
                   
                </tbody>
@@ -72,6 +72,18 @@ export default {
         patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
                   {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
                 ],
+        caseInfo:[
+            {caseID:'000001', fname:'ก้อน', lname:'เหินเวหา', detail:'เปลี่ยนรัด BK ข้างซ้าย', claim:'จ่ายตรง', status:'old', prosthesis:'พาณินี'},
+        {caseID:'000002', fname:'พจน์', lname:'มีเท', detail:'จับแบบ AK ข้างซ้าย', claim:'ประกันสังคม', status:'old', prosthesis:'พาณินี'},
+        {caseID:'000003', fname:'แปลก', lname:'แต่จริง', detail:'TCO', claim:'ข้าราชการ', status:'old', prosthesis:'พาณินี'},
+        {caseID:'000004', fname:'ปลา', lname:'กระป๋อง', detail:'ลองBK ขวา', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
+        {caseID:'000005', fname:'ประกัน', lname:'สูญสิ้นภัย', detail:'ลอง BK', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
+        {caseID:'000006', fname:'สายใจ', lname:'สายไหม', detail:'นัดนำรองเท้ามาเสริม', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
+        {caseID:'000007', fname:'ลาย', lname:'ไทย', detail:'นัดรับ SMO', claim:'UC', status:'new', prosthesis:'พาณินี'},
+        {caseID:'000008', fname:'ส่อ', lname:'ใช้ปืน', detail:'ซ่อมเท้า BK ขวา', claim:'ท.47', status:'old', prosthesis:'พาณินี'},
+        {caseID:'000009', fname:'ออมตัง', lname:'ไม่มีกิน', detail:'TCO', claim:'สวัสดิการท้องถิ่น', status:'new', prosthesis:'พาณินี'},
+        {caseID:'000010', fname:'พัดลม', lname:'ไม่มีใช้', detail:'จับแบบ BK แกนในข้างขวา', claim:'ท.47', status:'old', prosthesis:'พาณินี'}
+        ],
         selectFilter: 'HN',
         searchTxt: '',
     methods: {
