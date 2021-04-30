@@ -10,6 +10,8 @@ module.exports = (sequelize, Datatype) => {
             allowNull: false
         },
     }, { freezeTableName:true, timestamps:false})
-
+    user.associate = models =>{
+        user.hasOne(models.Hospital_community, {foreignKey:'province_ID'});
+    }
     return user
 }

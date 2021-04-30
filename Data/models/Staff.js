@@ -29,10 +29,6 @@ module.exports = (sequelize, Datatype) => {
             type: Datatype.STRING,
             allowNull: false
         },
-        age:{
-            type: Datatype.INTEGER,
-            allowNull: false
-        },
         sex:{
             type: Datatype.ENUM(['female','male']),
             allowNull: false
@@ -42,6 +38,8 @@ module.exports = (sequelize, Datatype) => {
             allowNull: false
         },
     }, { freezeTableName:true, timestamps:false})
-
+    user.associate = models =>{
+        user.hasMany(models.Case, {foreignKey:'staff_ID'});
+    }
     return user
 }

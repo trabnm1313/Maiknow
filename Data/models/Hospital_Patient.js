@@ -8,6 +8,15 @@ module.exports = (sequelize, Datatype) => {
             type: Datatype.STRING,
             allowNull: false
         },
+        register_ID:{
+            type: Datatype.STRING,
+            allowNull: false,
+            primaryKey: true
+        },
+        register_date:{
+            type: Datatype.DATE,
+            allowNull: false
+        }
     }, { freezeTableName:true, timestamps:false})
 
     return user
