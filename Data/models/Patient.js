@@ -42,8 +42,8 @@ module.exports = (sequelize, Datatype) => {
             allowNull: false
         },
     }, { freezeTableName:true, timestamps:false})
-    user.associate = models =>{
-        user.belongsToMany(models.hospital, {foreignKey:'hn', through: 'hospital_patient'});
-    }
+    // user.associate = models =>{
+    //     user.belongsToMany(models.hospital, {foreignKey:'hn', through: 'hospital_patient'});
+    // }
     return user
 }

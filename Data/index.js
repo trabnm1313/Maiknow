@@ -5,7 +5,8 @@ const { Case } = require("./models")
 const { Claim_Type } = require("./models")
 const { Department } = require("./models")
 const { Hospital_community } = require("./models")
-const { Hospital } = require("./models")
+const { hospital_patient } = require("./models")
+const { hospital } = require("./models")
 const { Patient } = require("./models")
 const { Province } = require("./models")
 const { Staff } = require("./models")
@@ -34,6 +35,9 @@ app.use("/patient", patient)
 // staff--------------------------------------------------------------------------------------------------//
 const staff = require("./route/staff")
 app.use("/staff", staff)
+//hospitalc---------------------------------------------------------------------------------------------
+const hospitalp = require("./route/hospitalp")
+app.use("/hospitalp", hospitalp)
 
 
 

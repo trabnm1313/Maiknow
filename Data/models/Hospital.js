@@ -23,10 +23,10 @@ module.exports = (sequelize, Datatype) => {
         },
     }, { freezeTableName:true, timestamps:false})
     hospital.associate = models =>{
-        hospital.belongsToMany(models.Patient, {foreignKey:'hospital_ID', through: 'hospital_patient'});
+    //     hospital.belongsToMany(models.Patient, {foreignKey:'hospital_ID', through: 'hospital_patient'});
         hospital.belongsTo(models.Province, {foreignKey:'province_ID'});
         hospital.belongsTo(models.Hospital_community, {foreignKey:'community_ID'});
-        hospital.hasMany(models.Department, {foreignKey:'hospital_ID'});
+        hospital.hasOne(models.Department, {foreignKey:'hospital_ID'});
     }
     return hospital
 }
