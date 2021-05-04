@@ -1,7 +1,7 @@
 module.exports = (sequelize, Datatype) => {
     const user = sequelize.define("Patient", {
        hn:{
-            type: Datatype.CHAR,
+            type: Datatype.STRING,
             primaryKey: true,
             allowNull: false
         },

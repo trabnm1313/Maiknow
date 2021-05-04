@@ -56,8 +56,23 @@ app.get('/read/:id', async (req, res) => {
 
 app.get('/read', async (req, res) => {
     let filter = req.params.filter
-    let data = await Patient.findAll({
-    })
+    let data = await Patient.findAll({raw:true})
+    data = data.map((all)=> {
+        let d = new Date();
+        let age = d.getFullYear()-all.birth_date.getFullYear()
+        console.log(all.birth_date.getFullYear())
+        if(all.birth_date.getMonth()> d.getMonth()+1 ){
+            age -= 1
+        }
+        else if(all.birth_date.getMonth() == d.getMonth()+1 ){
+            if(all.birth_date.getDate()> d.getDate()){ 
+                age -= 1 
+            }  
+        }
+        all.age = age
+        console.log(all)
+        return all
+    }) 
     res.send(data)
     console.log(filter)
 })

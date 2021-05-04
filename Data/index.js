@@ -58,3 +58,17 @@ app.listen(8000, () => {
     console.log('server is Ready!')
 })
 
+// //Authenticating database
+// db.sequelize.authenticate().then(()=>{
+//     console.log("Connected to database.")
+// }).catch((err)=>{
+//     console.log("Failed to connect to database: \n" + err)
+// })
+
+// app.get('/sync', async (req, res) => {
+//     db.sequelize.sync({ force: true })
+//     res.send(200)
+// })
+// app.listen(PORT, () => {
+//     console.log(`Server is lisening on port ${PORT}`)
+// })
