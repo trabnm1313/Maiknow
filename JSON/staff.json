@@ -1,0 +1,169 @@
+{
+  "staffs": [
+    {
+      "staff_ID": "000136",
+      "fname": "พันธ์เพชร",
+      "lname": "ประคองภักดิ์",
+      "address": "จันทบุรี",
+      "birth_date": "2001-08-14",
+      "email": "62070136@kmitl.ac.th",
+      "phone_number": "0639518133",
+      "sex": "male",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000003",
+      "fname": "กฤติน",
+      "lname": "ช่วยละแม",
+      "address": "ชุมพร",
+      "birth_date": "2001-02-16",
+      "email": "62070003@kmitl.ac.th",
+      "phone_number": "0996924140",
+      "sex": "male",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000012",
+      "fname": "กาญจนา",
+      "lname": "ศุภพงศ์",
+      "address": "สงขลา",
+      "birth_date": "2000-07-28",
+      "email": "62070012@kmitl.ac.th",
+      "phone_number": "0980177233",
+      "sex": "female",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000019",
+      "fname": "เกษราภรณ์",
+      "lname": "เดชบุญ",
+      "address": "สุราษฎร์ธานี",
+      "birth_date": "2001-05-14",
+      "email": "62070019@kmitl.ac.th",
+      "phone_number": "0982853005",
+      "sex": "female",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000050",
+      "fname": "ญาณดา",
+      "lname": "พงศ์พิศิษฎ์สกุล",
+      "address": "กทม.",
+      "birth_date": "2000-12-1",
+      "email": "62070050@kmitl.ac.th",
+      "phone_number": "0625454414",
+      "sex": "female",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000054",
+      "fname": "ฐิติกร",
+      "lname": "บุญลำพันธ์",
+      "address": "กทม.",
+      "birth_date": "2001-01-09",
+      "email": "62070054@kmitl.ac.th",
+      "phone_number": "0957260734",
+      "sex": "male",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000055",
+      "fname": "ฐิติพล",
+      "lname": "บุญลำพันธ์",
+      "address": "กทม.",
+      "birth_date": "2001-01-09",
+      "email": "62070055@kmitl.ac.th",
+      "phone_number": "0972365431",
+      "sex": "male",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000056",
+      "fname": "ณชนน",
+      "lname": "บุญสนอง",
+      "address": "กทม.",
+      "birth_date": "2001-04-09",
+      "email": "62070056@kmitl.ac.th",
+      "phone_number": "0917499494",
+      "sex": "male",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000083",
+      "fname": "ธนาทร",
+      "lname": "เรืองอารี",
+      "address": "กทม.",
+      "birth_date": "2001-03-09",
+      "email": "62070083@kmitl.ac.th",
+      "phone_number": "0637791659",
+      "sex": "male",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000122",
+      "fname": "ปิยะพิชฌ์",
+      "lname": "จุลพันธ์",
+      "address": "ชลบุรี",
+      "birth_date": "2001-06-07",
+      "email": "62070122@kmitl.ac.th",
+      "phone_number": "0834256451",
+      "sex": "male",
+      "department_ID": "062020"
+    },
+    {
+      "staff_ID": "000137",
+      "fname": "พาณินี",
+      "lname": "ไชยวรณ์",
+      "address": "สงขลา",
+      "birth_date": "2001-06-08",
+      "email": "62070137@kmitl.ac.th",
+      "phone_number": "0980176332",
+      "sex": "female",
+      "department_ID": "062070"
+    },
+    {
+      "staff_ID": "000155",
+      "fname": "มงคล",
+      "lname": "ค่ายแก้ว",
+      "address": "ชลบุรี",
+      "birth_date": "2000-01-31",
+      "email": "62070155@kmitl.ac.th",
+      "phone_number": "0923671204",
+      "sex": "male",
+      "department_ID": "062020"
+    },
+    {
+      "staff_ID": "000240",
+      "fname": "ชาลิสา",
+      "lname": "สกุลอัครวีร์",
+      "address": "กทม.",
+      "birth_date": "2001-05-18",
+      "email": "62070240@kmitl.ac.th",
+      "phone_number": "0853877741",
+      "sex": "female",
+      "department_ID": "062010"
+    },
+    {
+      "staff_ID": "000251",
+      "fname": "นาเดีย",
+      "lname": "สมัญญา",
+      "address": "กทม.",
+      "birth_date": "2000-11-10",
+      "email": "62070251@kmitl.ac.th",
+      "phone_number": "0918868526",
+      "sex": "female",
+      "department_ID": "062010"
+    },
+    {
+      "staff_ID": "000237",
+      "fname": "ชนิสรา",
+      "lname": "เอื้อสมศักดิ์สกุล",
+      "address": "กทม.",
+      "birth_date": "2000-11-15",
+      "email": "62070237@kmitl.ac.th",
+      "phone_number": "0859341518",
+      "sex": "female",
+      "department_ID": "062010"
+    }
+  ]
+}

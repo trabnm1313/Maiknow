@@ -1,0 +1,172 @@
+{
+  "departments": [
+    {
+      "department_ID": "062070",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000003",
+      "supervisor_ID": "000137"
+    },
+    {
+      "department_ID": "062010",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000001",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062020",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000002",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062030",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000004",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062040",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000005",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062050",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000006",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062060",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000007",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062080",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000008",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062090",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000009",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062100",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000010",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062110",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000011",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062120",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000012",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062130",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000013",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062140",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000014",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062150",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000015",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062160",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000016",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062170",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000017",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062180",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000018",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062190",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000019",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062200",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000020",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062210",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000021",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062220",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000022",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062230",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000023",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062240",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000024",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062250",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000025",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062260",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000026",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062270",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000027",
+      "supervisor_ID": ""
+    },
+    {
+      "department_ID": "062280",
+      "name": "งานกายอุปกรณ์ กลุ่มเวชกรรมฟื้นฟู",
+      "hospital_ID": "000028",
+      "supervisor_ID": ""
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "hospitals": [
+    {
+      "hospital_ID": "000001",
+      "name": "โรงพยาบาล รักสุขภาพ",
+      "address": "กทม.",
+      "community_ID": "000001",
+      "provice_ID": "000001"
+    },
+    {
+      "hospital_ID": "000002",
+      "name": "โรงพยาบาล อยู่ดีมีสุข",
+      "address": "กทม.",
+      "community_ID": "000001",
+      "provice_ID": "000001"
+    },
+    {
+      "hospital_ID": "000003",
+      "name": "โรงพยาบาล มีความสุข",
+      "address": "สงขลา",
+      "community_ID": "000002",
+      "provice_ID": "000002"
+    },
+    {
+      "hospital_ID": "000004",
+      "name": "โรงพยาบาล ไกลโรค",
+      "address": "สงขลา",
+      "community_ID": "000002",
+      "provice_ID": "000002"
+    },
+    {
+      "hospital_ID": "000005",
+      "name": "โรงพยาบาล หมอพร้อม",
+      "address": "จันทบุรี",
+      "community_ID": "000003",
+      "provice_ID": "000003"
+    },
+    {
+      "hospital_ID": "000006",
+      "name": "โรงพยาบาล ไทยชนะ",
+      "address": "จันทบุรี",
+      "community_ID": "000003",
+      "provice_ID": "000003"
+    },
+    {
+      "hospital_ID": "000007",
+      "name": "โรงพยาบาล หมอเก่ง",
+      "address": "ชลบุรี",
+      "community_ID": "000004",
+      "provice_ID": "000004"
+    },
+    {
+      "hospital_ID": "000008",
+      "name": "โรงพยาบาล หมอชนะ",
+      "address": "ชลบุรี",
+      "community_ID": "000004",
+      "provice_ID": "000004"
+    },
+    {
+      "hospital_ID": "000009",
+      "name": "โรงพยาบาล เราเที่ยวด้วยกัน",
+      "address": "ระยอง",
+      "community_ID": "000005",
+      "provice_ID": "000005"
+    },
+    {
+      "hospital_ID": "0000010",
+      "name": "โรงพยาบาล รักษาดี",
+      "address": "ระยอง",
+      "community_ID": "000005",
+      "provice_ID": "000005"
+    },
+    {
+      "hospital_ID": "000011",
+      "name": "โรงพยาบาล เก่งกาจ",
+      "address": "ตราด",
+      "community_ID": "000006",
+      "provice_ID": "000006"
+    },
+    {
+      "hospital_ID": "0000012",
+      "name": "โรงพยาบาล เพื่อประชาชน",
+      "address": "ตราด",
+      "community_ID": "000006",
+      "provice_ID": "000006"
+    },
+    {
+      "hospital_ID": "000013",
+      "name": "โรงพยาบาล เพื่อมวลชน",
+      "address": "ฉะเชิงเทรา",
+      "community_ID": "000007",
+      "provice_ID": "000007"
+    },
+    {
+      "hospital_ID": "0000014",
+      "name": "โรงพยาบาล รถไฟไทย",
+      "address": "ฉะเชิงเทรา",
+      "community_ID": "000007",
+      "provice_ID": "000007"
+    },
+    {
+      "hospital_ID": "000015",
+      "name": "โรงพยาบาล ฝากรัก",
+      "address": "ชุมพร",
+      "community_ID": "000008",
+      "provice_ID": "000008"
+    },
+    {
+      "hospital_ID": "0000016",
+      "name": "โรงพยาบาล เราชนะ",
+      "address": "ชุมพร",
+      "community_ID": "000008",
+      "provice_ID": "000008"
+    },
+    {
+      "hospital_ID": "000017",
+      "name": "โรงพยาบาล ลักรามทหารไทย",
+      "address": "สุราษฎร์ธานี",
+      "community_ID": "000009",
+      "provice_ID": "000009"
+    },
+    {
+      "hospital_ID": "0000018",
+      "name": "โรงพยาบาล บุญสนอง",
+      "address": "สุราษฎร์ธานี",
+      "community_ID": "000009",
+      "provice_ID": "000009"
+    },
+    {
+      "hospital_ID": "000019",
+      "name": "โรงพยาบาล ช่วยละแม",
+      "address": "ปราจีนบุรี",
+      "community_ID": "000010",
+      "provice_ID": "000010"
+    },
+    {
+      "hospital_ID": "0000020",
+      "name": "โรงพยาบาล ศุภพงศ์",
+      "address": "ปราจีนบุรี",
+      "community_ID": "000010",
+      "provice_ID": "000010"
+    },
+    {
+      "hospital_ID": "000021",
+      "name": "โรงพยาบาล ชากังราว",
+      "address": "สระแก้ว",
+      "community_ID": "000011",
+      "provice_ID": "000011"
+    },
+    {
+      "hospital_ID": "0000022",
+      "name": "โรงพยาบาล หมีพูล",
+      "address": "สระแก้ว",
+      "community_ID": "000011",
+      "provice_ID": "000011"
+    },
+    {
+      "hospital_ID": "000023",
+      "name": "โรงพยาบาล แผนไทย",
+      "address": "สมุทรปราการ",
+      "community_ID": "000012",
+      "provice_ID": "000012"
+    },
+    {
+      "hospital_ID": "0000024",
+      "name": "โรงพยาบาล ไกลตะโกน",
+      "address": "สมุทรปราการ",
+      "community_ID": "000012",
+      "provice_ID": "000012"
+    },
+    {
+      "hospital_ID": "000025",
+      "name": "โรงพยาบาล คายแก้ว",
+      "address": "สมุทรสาคร",
+      "community_ID": "000013",
+      "provice_ID": "000013"
+    },
+    {
+      "hospital_ID": "0000026",
+      "name": "โรงพยาบาล เรืองอารี",
+      "address": "สมุทรสาคร",
+      "community_ID": "000013",
+      "provice_ID": "000013"
+    },
+    {
+      "hospital_ID": "000027",
+      "name": "โรงพยาบาล เพื่อคุณ",
+      "address": "สมุทรสงคราม",
+      "community_ID": "000014",
+      "provice_ID": "000014"
+    },
+    {
+      "hospital_ID": "0000028",
+      "name": "โรงพยาบาล 24ชม.",
+      "address": "สมุทรสงคราม",
+      "community_ID": "000014",
+      "provice_ID": "000014"
+    }
+  ]
+}
