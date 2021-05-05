@@ -67,26 +67,7 @@ export default {
                         if(response.status == 200){
                             this.saveLocal(response.data.accessToken)
                             this.error = false
-                            axios.get("http://localhost:3000/",
-                            {
-                                headers: {
-                                    'Authorization': 'Bearer '+ this.getLocal()
-                                            }
-                                })
-                            .then((res) => {
-                                console.log(res)
-                                if(res.status == 200){
-                                    this.$router.replace({ name: "dashboard" })
-                                }
-                            })
-                            .catch((err) => {
-                                if(err.request.status === 403){
-                                    this.$router.replace({ name: "forbidden" })
-                                }
-                                if(err.request.status === 404){
-                                    this.$router.replace({ name: "notFound" })
-                                }
-                            })
+                            this.$router.replace({ name: "dashboard" })
                         }
                     })
                     .catch((err) => {

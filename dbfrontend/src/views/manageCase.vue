@@ -2,7 +2,7 @@
                 <div id="detail" class="box">
               <div class="columns">
                 <div class="column is-4">
-                  <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt">
+                  <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt" v-on:keyup.enter="onEnter">
               </div>
               <div class="column is-1">
                   <span class="mr-4 textHeader">Filter</span>
@@ -10,20 +10,17 @@
                 <div class="column is-4">
                   <div class="select is-rounded is-small" style="width: 280px">
                     <select style="width: 280px" v-model="selectFilter">
-                      <option value="HN">HN</option>
-                      <option value="Firstname">Firstname</option>
-                      <option value="Lastname">Lastname</option>
-                      <option value="Last Appointment">Last Appointment</option>
-                      <option value="Patient Name">Patient Name</option>
-                      <option value="Claim">Claim</option>
-                      <option value="Status">Status</option>
-                      <option value="Prosthesis">Prosthesis</option>
+                      <option value="Patient.hn">HN</option>
+                      <option value="date">Last Appointment</option>
+                      <option value="Claim_Type.claim">Claim</option>
+                      <option value="type">Status</option>
+                      <option value="Staff.fname">Prosthesis</option>
                     </select>
                   </div>
                 </div>
                 <div class="column is-3">
                   <a @click="minusPage()"><img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4"></a>
-                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/{{countPage}}</h1>
+                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page+1}}/{{countPage}}</h1>
                   <a @click="plusPage()"><img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4"></a>
                 </div>
             </div>
@@ -31,8 +28,6 @@
                <thead style="background-color:#BA9657;">
                   <tr>
                      <th class="has-text-white">Case ID</th>
-                     <th class="has-text-white">Firstname</th>
-                     <th class="has-text-white">Lastname</th>
                      <th class="has-text-white">Detail</th>
                      <th class="has-text-white">Claim</th>
                      <th class="has-text-white">Status</th>
@@ -40,14 +35,12 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(caseInfo, key) in caseInfo" :key="key">
-                     <td>{{caseInfo.caseID}}</td>
-                     <td>{{caseInfo.fname}}</td>
-                     <td>{{caseInfo.lname}}</td>
+                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(caseInfo, key) in visiblePage" :key="key" @click="$router.push({ name: 'editCase',  params: { case_ID: caseInfo.case_ID }})">
+                     <td>{{caseInfo.case_ID}}</td>
                      <td>{{caseInfo.detail}}</td>
-                     <td>{{caseInfo.claim}}</td>
-                     <td>{{caseInfo.status}}</td>
-                     <td>{{caseInfo.prosthesis}}</td>
+                     <td>{{caseInfo['Claim_Type.claim']}}</td>
+                     <td>{{caseInfo.type}}</td>
+                     <td>{{caseInfo['Staff.fname']}}</td>
                   </tr>
                   
                </tbody>
@@ -66,71 +59,99 @@ export default {
     name: 'home',
     data() {
       return {
-        page: 1,
-        countPage: 10,
-        prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
-        patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
-                ],
-        caseInfo:[
-            {caseID:'000001', fname:'ก้อน', lname:'เหินเวหา', detail:'เปลี่ยนรัด BK ข้างซ้าย', claim:'จ่ายตรง', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000002', fname:'พจน์', lname:'มีเท', detail:'จับแบบ AK ข้างซ้าย', claim:'ประกันสังคม', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000003', fname:'แปลก', lname:'แต่จริง', detail:'TCO', claim:'ข้าราชการ', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000004', fname:'ปลา', lname:'กระป๋อง', detail:'ลองBK ขวา', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000005', fname:'ประกัน', lname:'สูญสิ้นภัย', detail:'ลอง BK', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000006', fname:'สายใจ', lname:'สายไหม', detail:'นัดนำรองเท้ามาเสริม', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000007', fname:'ลาย', lname:'ไทย', detail:'นัดรับ SMO', claim:'UC', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000008', fname:'ส่อ', lname:'ใช้ปืน', detail:'ซ่อมเท้า BK ขวา', claim:'ท.47', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000009', fname:'ออมตัง', lname:'ไม่มีกิน', detail:'TCO', claim:'สวัสดิการท้องถิ่น', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000010', fname:'พัดลม', lname:'ไม่มีใช้', detail:'จับแบบ BK แกนในข้างขวา', claim:'ท.47', status:'old', prosthesis:'พาณินี'}
-        ],
-        selectFilter: 'HN',
+        page: 0,
+        countPage: 2,
+        nextID: 9,
+        pageSize: 8,
+        prosthesisAccount:{},
+        patients:[],
+        caseInfo:[],
+        selectFilter: 'Patient.hn',
         searchTxt: '',
-    methods: {
-
+        visiblePage: [],
+      }
+        }, mounted() {
+          this.getCase()
+          this.updateShowPage()
         },
-          plusPage(){
-            if(this.page >= 1 && this.page < 10){
-              this.page++
-            }
-          },
-          minusPage(){
-            if(this.page <= 10 && this.page > 1){
-              this.page--
-            } 
-          },
-          pushRouter(nameRouter){
-          axios.get("http://localhost:3000/",
-                            {
+        methods: {
+          getCase() {
+            console.log("case")
+            axios
+            .get('http://localhost:3000/case/read', 
+                              {
                                 headers: {
                                     'Authorization': 'Bearer '+ this.getLocal()
                                             }
                                 })
-                            .then((res) => {
-                                console.log(res)
-                                if(res.status == 200){
-                                    this.$router.replace({ name: nameRouter })
-                                }
-                            })
-                            .catch((err) => {
-                                if(err.request.status === 403 || err.request.status === 400){
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.caseInfo = response.data
+                            this.countPage = Math.ceil(this.caseInfo.length/this.pageSize)
+                            this.updateShowPage();
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
                                     this.$router.replace({ name: "forbidden" })
                                 }
-                                if(err.request.status === 400){
+                        if(err.request.status === 404){
                                     this.$router.replace({ name: "notFound" })
                                 }
-                            })
-        },
-            getLocal() {
+                        console.log(err)
+                    }); 
+          },
+          plusPage(){
+           if(this.page >= 0 && this.page < this.countPage-1){
+              this.page++
+              this.updateShowPage();
+            }
+            
+          },
+          minusPage(){
+            if(this.page <= this.countPage-1 && this.page > 0){
+              this.page--
+              this.updateShowPage();
+            } 
+          },
+          updateShowPage() {
+            this.visiblePage = this.caseInfo.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize);
+          },
+          pushRouter(nameRouter){
+            this.$router.replace({ name: nameRouter })
+          },
+          getLocal() {
                 var txt = localStorage.getItem("user");
                 var obj = JSON.parse(txt);
                 return obj
-            }
-      }
+            },
+          onEnter: function() {
+            axios
+            .get('http://localhost:3000/case/filter?search='+this.searchTxt+'&column='+this.selectFilter)
+                              .then((response) => {
+                                                  if(response.status == 200){
+                                                      this.caseInfo = response.data
+                                                      this.countPage = Math.ceil(this.caseInfo.length/this.pageSize)
+                                                      this.updateShowPage();
+                                                      console.log(this.caseInfo)
+                                                  }
+                                              })
+                              .catch((err) => {
+                                                  if(err.request.status === 403){
+                                                              this.$router.replace({ name: "forbidden" })
+                                                          }
+                                                  if(err.request.status === 404){
+                                                              this.$router.replace({ name: "notFound" })
+                                                          }
+                                                  console.log(err)
+                                              });
+            this.updateShowPage()
+           }
+                
     }
   }
 </script>
-
 <style scoped>
   #home{
     font-family: 'K2D' , serif;

@@ -8,7 +8,7 @@
                              <div class="column is-9 mb-6 pt-6">
                                     <img id="img-column" :src="require('../assets/forbiden.png')">
                                     <div class="title" id="head-text">ERROR</div>
-                                    <div class="title" id="head-text">403 NOT FOUND</div>
+                                    <div class="title" id="head-text">403 FORBIDDEN</div>
                             </div>
                         </div>        
                     </div>

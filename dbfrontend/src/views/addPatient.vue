@@ -16,9 +16,9 @@
            </div>
         <div class="field-body">
           <div class="field">
-            <div class="column is-4 pl-4 pt-4">
-            <div class="control">
-                <input class="input ml-5 patient-non-dis patient-text" type="text" value="12345">
+            <div class="column is-4 pl-5 pt-4">
+            <div class="control ml-2">
+                <input class="input ml-5 patient-non-dis patient-text" type="text" v-model="data.hn">
             </div>
             </div>
           </div>
@@ -35,7 +35,7 @@
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+                <input class="input patient-non-dis patient-text" type="text" v-model="data.fname">
               </div>
             </div>
             </div>
@@ -52,7 +52,7 @@
           <div class="field">
             <div class="column pl-0  mt-3">
             <div class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+                <input class="input patient-non-dis patient-text" type="text" v-model="data.lname">
               </div>
             </div>
             </div>
@@ -70,7 +70,7 @@
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+                <input class="input patient-non-dis patient-text" type="text" v-model="data.person_id">
               </div>
             </div>
             </div>
@@ -86,7 +86,7 @@
           <div class="field-body">
             <div class="field">
               <div class="control">
-                <textarea class="textarea patient-non-dis patient-text"></textarea>
+                <textarea class="textarea patient-non-dis patient-text" v-model="data.address"></textarea>
               </div>
             </div>
           </div>
@@ -99,8 +99,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column is-4 pl-3 pt-4 pr-0">
-            <div class="control">
-                <input class="input ml-5 patient-non-dis patient-text" type="date">
+            <div class="control ml-3">
+                <input class="input ml-5 patient-non-dis patient-text" type="date" v-model="data.birth_date">
             </div>
             </div>
           </div>
@@ -116,8 +116,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column is-4 pl-5 pt-4 pr-6">
-            <div class="control pl-4">
-                <input class="input ml-2 patient-dis patient-text" type="text" value="19" disabled>
+            <div class="control pl-4  ml-3">
+                <input class="input ml-2 patient-dis patient-text" type="text"  disabled v-model="ageP">
             </div>
             </div>
           </div>
@@ -133,8 +133,13 @@
           <div class="field-body">
             <div class="field">
               <div class="column is-4 pl-5 pt-4 pr-6">
-                <div class="control pl-4">
-                  <input class="input ml-2 patient-non-dis patient-text" type="text" value="19">
+                <div class="control pl-4  ml-3">
+                    <div class="select ml-2 patient-text">
+                    <select v-model="data.sex">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
@@ -149,9 +154,9 @@
           </div>
           <div class="field-body">
             <div class="field">
-              <div class="column is-4 pl-5 pt-4 pr-6">
-                <div class="control pl-4">
-                  <input class="input ml-2 patient-non-dis patient-text" type="text" value="19">
+              <div class="column is-4 pl-5 pt-4 ">
+                <div class="control pl-4  ml-3" >
+                  <input class="input ml-2 patient-non-dis patient-text" type="text" v-model="data.phone_number">
                 </div>
               </div>
             </div>
@@ -161,14 +166,14 @@
         <div class="field is-horizontal mb-0">
           <div class="column is-3 ml-1">
           <div class="field-label is-normal mr-3 mt-2">
-            <label class="label text-add has-text-left pl-2">Nationality : </label>
+            <label class="label text-add has-text-left pl-2">Nationlity : </label>
           </div>
           </div>
         <div class="field-body">
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+                <input class="input patient-non-dis patient-text" type="text" v-model="data.nationlity">
               </div>
             </div>
             </div>
@@ -185,7 +190,7 @@
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+                <input class="input patient-non-dis patient-text" type="text" v-model="data.religion">
               </div>
             </div>
             </div>
@@ -202,7 +207,7 @@
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+                <input class="input patient-non-dis patient-text" type="text" v-model="data.occupation">
               </div>
             </div>
             </div>
@@ -219,7 +224,7 @@
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+                <input class="input patient-non-dis patient-text" type="text" v-model="data.office_name">
               </div>
             </div>
             </div>
@@ -246,7 +251,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="$router.replace({ name: 'managePatient' });" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="$router.replace({ name: 'managePatient' }); " style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalCancel = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -267,7 +272,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="$router.replace({ name: 'managePatient' });" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="addCase()" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalComfirm = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -278,15 +283,64 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: 'home',
   data() {
     return {
-      modalCancel: false,
-      modalComfirm: false
+    data: {
+          hn: '',
+          fname: '',
+          lname: '',
+          address: '',
+          birth_date: '',
+          person_id: '',
+          nationlity: '',
+          religion: '',
+          occupation: '',
+          phone_number: '',
+          sex: 'male',
+          office_name: ''
+    },
+    modalCancel: false,
+      modalComfirm: false,
+    }
+    
+  },
+  computed:{
+          ageP: function(){
+            let currentDate = new Date();
+            let birthDate = new Date(this.data.birth_date);
+            let difference = currentDate - birthDate;
+            let age = Math.floor(difference/31557600000);
+            return age
+          }
+  },
+  methods: {
+    addCase() {
+        console.log("show:"+this.data)
+        axios
+        .post("http://localhost:3000/patient/create", this.data)
+          .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            console.log(response)
+                            this.$router.replace({ name: "managePatient" })
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                        if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                        console.log(err)
+                    }); 
+      }
     }
   }
-}
+
 </script>
 <style scoped>
 .text-add{
@@ -324,5 +378,8 @@ export default {
   font-size: 18px;
   font-weight: bold;
 }
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #cfcfcf;
+  }
 
 </style>

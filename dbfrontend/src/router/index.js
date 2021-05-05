@@ -87,7 +87,7 @@ const routes = [
         path: "/editCase",
         name: "editCase",
         component: () => import('../views/editCase.vue'),
-        meta: {title: 'Edit Case - Prosthetic & Orthotic Manage System'}
+        meta: {title: 'Edit Case - Prosthetic & Orthotic Manage System'},
     }
     ,
     {

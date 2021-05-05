@@ -2,7 +2,7 @@
                 <div id="detail" class="box">
               <div class="columns">
                 <div class="column is-4">
-                  <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt">
+                  <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt" v-on:keyup.enter="onEnter">
               </div>
               <div class="column is-1">
                   <span class="mr-4 textHeader">Filter</span>
@@ -10,14 +10,13 @@
                 <div class="column is-4">
                   <div class="select is-rounded is-small" style="width: 280px">
                     <select style="width: 280px" v-model="selectFilter">
-                      <option value="HN">HN</option>
-                      <option value="Firstname">Firstname</option>
-                      <option value="Lastname">Lastname</option>
-                      <option value="Last Appointment">Last Appointment</option>
-                      <option value="Patient Name">Patient Name</option>
-                      <option value="Claim">Claim</option>
-                      <option value="Status">Status</option>
-                      <option value="Prosthesis">Prosthesis</option>
+                      <option value="Patient.hn">HN</option>
+                      <option value="Patient.fname">Firstname</option>
+                      <option value="Patient.lname">Lastname</option>
+                      <option value="date">Last Appointment</option>
+                      <option value="Claim_Type.claim">Claim</option>
+                      <option value="type">Status</option>
+                      <option value="Staff.fname">Prosthesis</option>
                     </select>
                   </div>
                 </div>
@@ -40,80 +39,120 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in visiblePage" :key="key">
-                     <td>{{patient.hn}}</td>
-                     <td>{{patient.fname}}</td>
-                     <td>{{patient.lname}}</td>
-                     <td>{{patient.lastAppointment}}</td>
-                     <td>{{patient.claim}}</td>
-                     <td>{{patient.status}}</td>
-                     <td>{{patient.prosthesis}}</td>
+                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(caseP, key) in visiblePage" :key="key">
+                     <td>{{caseP.hn}}</td>
+                     <td>{{caseP['Patient.fname']}}</td>
+                     <td>{{caseP['Patient.lname']}}</td>
+                     <td>{{caseP.date.slice(0, 10)}}</td>
+                     <td>{{caseP['Claim_Type.claim']}}</td>
+                     <td>{{caseP.type}}</td>
+                     <td>{{caseP['Staff.fname']}}</td>
                   </tr>
                   
                </tbody>
             </table>
                   <div class="columns mr-5 go-botton">
                     <div class="column go-botton go-right">
-                      <span class="" style="font-size: 20px;line-height: 20px;color: #BA9657;">Total : {{ patients.length }}</span>
+                      <span class="" style="font-size: 20px;line-height: 20px;color: #BA9657;">Total : {{ caseInfo.length }}</span>
                     </div>
                   </div>
                 </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
     name: 'home',
     data() {
       return {
         page: 0,
-        countPage: 10,
+        countPage: 2,
         nextID: 10,
-        pageSize: 8,
-        prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
-        patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'3', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'4', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'5', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'6', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'7', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'8', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'9', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'10', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'11', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'12', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'},
-                  {hn:'13', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
-                ],
+        pageSize: 9,
+        prosthesisAccount:{},
+        caseInfo:[],
         visiblePage: [],
-        selectFilter: 'HN',
+        selectFilter: 'Patient.hn',
         searchTxt: '',
-    methods: {
-        
+        }
+      }, mounted() {
+          this.getCase()
+          this.updateShowPage()
+        },
+        methods: {
+          getCase() {
+            axios
+            .get('http://localhost:3000/case/read', 
+                              {
+                                headers: {
+                                    'Authorization': 'Bearer '+ this.getLocal()
+                                            }
+                                })
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.caseInfo = response.data
+                            this.countPage = Math.ceil(this.caseInfo.length/this.pageSize)
+                            this.updateShowPage();
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                        if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                        console.log(err)
+                    }); 
           },
           plusPage(){
-           if(this.page >= 0 && this.page < 10){
+           if(this.page >= 0 && this.page < this.countPage-1){
               this.page++
               this.updateShowPage();
             }
             
           },
           minusPage(){
-            if(this.page <= 10 && this.page > 0){
+            if(this.page <= this.countPage-1 && this.page > 0){
               this.page--
               this.updateShowPage();
             } 
           },
-          updatePage(pageN) {
-            this.page = pageN;
-            this.countPage = this.patients.length/9
-            this.updateShowPage();
-          },
           updateShowPage() {
-            this.visiblePage = this.patients.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize);
-          }
-
+            this.visiblePage = this.caseInfo.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize);
+          },
+          pushRouter(nameRouter){
+            this.$router.replace({ name: nameRouter })
+          },
+          getLocal() {
+                var txt = localStorage.getItem("user");
+                var obj = JSON.parse(txt);
+                return obj
+          },
+          onEnter: function() {
+            axios
+            .get('http://localhost:3000/case/filter?search='+this.searchTxt+'&column='+this.selectFilter)
+                              .then((response) => {
+                                                  if(response.status == 200){
+                                                      this.caseInfo = response.data
+                                                      this.countPage = Math.ceil(this.caseInfo.length/this.pageSize)
+                                                      this.updateShowPage();
+                                                      console.log(this.caseInfo)
+                                                  }
+                                              })
+                              .catch((err) => {
+                                                  if(err.request.status === 403){
+                                                              this.$router.replace({ name: "forbidden" })
+                                                          }
+                                                  if(err.request.status === 404){
+                                                              this.$router.replace({ name: "notFound" })
+                                                          }
+                                                  console.log(err)
+                                              });
+            this.updateShowPage()
+            }
         }
-      }
     }
 </script>
 

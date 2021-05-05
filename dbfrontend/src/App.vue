@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=K2D">
 
-    <div v-if="$route.fullPath != '/' && $route.fullPath != '/forgotPassword' && $route.fullPath != '/forbiden'  && $route.fullPath != '/notFound'">
+    <div v-if="$route.fullPath != '/' && $route.fullPath != '/forgotPassword' && $route.fullPath != '/forbidden'  && $route.fullPath != '/notFound'">
       <div id="home" class="hero is-fullheight">
        <div class="hero-body pl-0 pt-2 mb-2 pb-1">
           <div class="container is-fluid px-0 ">
@@ -15,8 +15,8 @@
                     <div class="columns is-vcentered" @click="pushRouter('editProfile')">
                         <div class="column mt-4" id="pro">
                           <img class="mt-5" id="imgPro" src="@/assets/user.png">
-                        <span id="pro-text" class="f">{{prosthesisAccount.fname}} {{prosthesisAccount.lname}}</span>
-                        <p id="role">{{prosthesisAccount.role}}</p>
+                        <span id="pro-text" class="f">{{prosthesisAccount['Staff.fname']}} {{prosthesisAccount['Staff.lname']}}</span>
+                        <p id="role">prosthesis</p>
                         </div>
                     </div>
                     </li>
@@ -97,45 +97,59 @@
   
 </template>
 <script>
-
 import axios from "axios";
 export default {
   
     name: 'home',
     data() {
       return {
-        prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
+        prosthesisAccount:{},
         modalLogout: false,
-        pushRouter(nameRouter){
-          axios.get("http://localhost:3000/",
-                            {
+    }
+  },
+  created(){
+            axios
+            .get('http://localhost:3000/user/current', {
                                 headers: {
                                     'Authorization': 'Bearer '+ this.getLocal()
                                             }
                                 })
-                            .then((res) => {
-                                console.log(res)
-                                if(res.status == 200){
-                                    this.$router.replace({ name: nameRouter })
-                                }
-                            })
-                            .catch((err) => {
-                                if(err.request.status === 403 || err.request.status === 400){
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.prosthesisAccount = response.data
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
                                     this.$router.replace({ name: "forbidden" })
                                 }
-                                if(err.request.status === 400){
+                        if(err.request.status === 404){
                                     this.$router.replace({ name: "notFound" })
                                 }
-                            })
-        },
-            getLocal() {
+                        console.log(err)
+                    }); 
+  },
+  methods: {
+          plusPage(){
+            if(this.page >= 1 && this.page < 10){
+              this.page++
+            }
+          },
+          minusPage(){
+            if(this.page <= 10 && this.page > 1){
+              this.page--
+            } 
+          },
+          pushRouter(nameRouter){
+            this.$router.replace({ name: nameRouter })
+          },
+          getLocal() {
                 var txt = localStorage.getItem("user");
                 var obj = JSON.parse(txt);
                 return obj
             }
-        
     }
-  }
 }
 </script>
 

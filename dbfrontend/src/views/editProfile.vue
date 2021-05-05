@@ -2,62 +2,55 @@
   <div id="detail" class="box">
     <div class="columns">
       <div class="column pb-0">
-        <div class="columns">
-          <div class="column is-one-third">
-            <img :src="require('../assets/user.png')" style="width: 234px; height: 234px;">
+        <div class="columns pl-0">
+          <div class="column is-3 ml-6 mt-5">
+            <img :src="require('../assets/user.png')" style="width: 200px; height: 200px;">
           </div>
 <!--          Profile-->
-          <div class="column">
+          <div class="column pl-0">
 <!--            name-->
             <div v-if="!isEdit" class="columns mt-6">
-              <input class="input is-name-de is-large profile-text profile-dis" type="text" :value="prosthesisAccount.fname+' '+prosthesisAccount.lname" disabled>
+              <input class="input is-name-de is-large profile-text profile-dis" type="text" v-model="fullname" disabled>
             </div>
             <div v-else class="columns mt-6">
-              <input class="input is-name-de is-large profile-text profile-non-dis" type="text" :value="prosthesisAccount.fname+' '+prosthesisAccount.lname">
+              <input class="input is-name-de is-large profile-text profile-non-dis" type="text" v-model="fullname" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}'>
             </div>
 <!--            ID-->
             <div class="columns mt-3">
               <label class="profile-text" style="font-size: 24px;">ID :</label>
-              <input id="id" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.id" disabled>
-            </div>
-<!--            hospital-->
-            <div v-if="!isEdit" class="columns mt-3">
-              <input class="input profile-text is-name-de profile-dis" type="text" style="font-size: 20px;"  v-model="prosthesisAccount.hospital" disabled>
-            </div>
-            <div v-else class="columns mt-3">
-              <input class="input profile-text is-name-de profile-non-dis" type="text" style="font-size: 20px;"  v-model="prosthesisAccount.hospital">
+              <input id="id" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount['Staff.staff_ID']" disabled>
             </div>
           </div>
         </div>
-        <div class="columns">
+        <div class="columns mt-2">
 <!--          email-->
           <div v-if="!isEdit" class="column is-half ml-5">
             <label class="profile-text" style="font-size: 24px;">E-mail :</label>
-            <input class="input is-email-ph profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.email" disabled>
+            <input class="input is-email-ph profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount['Staff.email']" disabled>
           </div>
           <div v-else class="column is-half ml-5">
             <label class="profile-text" style="font-size: 24px;">E-mail :</label>
-            <input class="input is-email-ph profile-text profile-non-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.email">
+            <input class="input is-email-ph profile-text profile-non-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount['Staff.email']" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}'>
           </div>
 <!--          phonenumber-->
           <div v-if="!isEdit" class="column">
             <label class="profile-text" style="font-size: 24px;">Phone Number :</label>
-            <input class="input is-email-ph profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.phone" disabled>
+            <input class="input is-email-ph profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount['Staff.phone_number']" disabled>
           </div>
           <div v-else class="column">
             <label class="profile-text" style="font-size: 24px;">Phone Number :</label>
-            <input class="input is-email-ph profile-text profile-non-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.phone">
+            <input class="input is-email-ph profile-text profile-non-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount['Staff.phone_number']" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}'>
           </div>
         </div>
         <div class="columns">
 <!--          address-->
           <div v-if="!isEdit" class="column ml-5">
             <label class="profile-text" style="font-size: 24px;">Address :</label>
-            <input class="address input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.address" disabled>
+            <input class="address input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount['Staff.address']" disabled>
           </div>
-          <div v-else class="column ml-5">
+          <div v-else class="column ml-5 ">
             <label class="profile-text" style="font-size: 24px;">Address :</label>
-            <textarea class="textarea-handmake profile-text profile-non-dis ml-2" style="font-weight: bold; vertical-align: top;" v-model="prosthesisAccount.address">
+            <textarea class="textarea-handmake profile-text profile-non-dis ml-2" style="font-weight: bold; vertical-align: top;" v-model="prosthesisAccount['Staff.address']" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}'>
             </textarea>
           </div>
         </div>
@@ -65,23 +58,19 @@
 <!--          dob-->
           <div v-if="!isEdit" class="column is-half ml-5">
             <label class="profile-text" style="font-size: 24px;">D.O.B :</label>
-            <input class="dob input profile-text profile-dis ml-2"  type="date" style="font-weight: bold;" v-model="prosthesisAccount.dob" disabled>
-          </div>
-          <div v-else class="column is-half ml-5">
-            <label class="profile-text" style="font-size: 24px;">D.O.B :</label>
-            <input class="dob input profile-text profile-non-dis ml-2"  type="date" style="font-weight: bold;" v-model="prosthesisAccount.dob">
+            <input class="dob input profile-text profile-dis ml-2"  type="date" style="font-weight: bold;" v-model="dob" disabled>
           </div>
 <!--          age-->
           <div class="column">
             <label class="profile-text" style="font-size: 24px;">Age :</label>
-            <input  class="is-age-count input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.age" disabled>
+            <input  class="is-age-count input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="ageP" disabled>
           </div>
         </div>
         <div class="columns">
 <!--          gender-->
           <div class="column ml-5 is-half">
             <label class="profile-text" style="font-size: 24px;">Gender :</label>
-            <input id="gender" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount.gender" disabled>
+            <input id="gender" class="input profile-text profile-dis ml-2"  type="text" style="font-weight: bold;" v-model="prosthesisAccount['Staff.sex']" disabled>
           </div>
 <!--          count-->
           <div class="column">
@@ -151,6 +140,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import axios from "axios";
 export default {
   name: 'home',
@@ -160,80 +150,108 @@ export default {
       modalComfirm: false,
       isEdit: false,
       page: 1,
-      prosthesisAccount:{id:'620700137', fname:'พาณินี', lname:'ไชยวรณ์', role:'Prosthesis', hospital:'KMITL Hospital', email:'620700137@gmail.com',phone:'0980176332',address:'kmitl',dob:'2001-05-14', age:20,gender:'Female'},
-      patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
-        {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
-      ],
-      caseInfo:[
-        {
-          caseID:'1',
-          fname:'Big',
-          lname:'Boss',
-          details:'Breakup',
-          claim:'IDK',
-          status:'It\'s ok',
-          prosthesis:'Mai',
-          hospital:'KMITL',
-          isShare: true
-        },
-        {
-          caseID:'2',
-          fname:'Review',
-          lname:'Vizz',
-          details:'none',
-          claim:'none',
-          status:'none',
-          prosthesis:'Mai',
-          hospital:'KMITL',
-          isShare: true
-        }
-      ],
-      prosthesis:{
-        id:'62070136',
-        fname:'Punpetch',
-        lname:'Prakongpak',
-        department:'Prosthesis at ABC Hospital, Bangkok',
-        email:'62070136@it.kmitl.ac.th',
-        phoneNumber:'0639518133',
-        address:'KMITL',
-        dob:'2001-08-14',
-        age:'19',
-        gender:'male'
-      },
+      prosthesisAccount:{},
+      patients:[],
+      caseInfo:[],
       selectFilter: '0',
       searchTxt: '',
-      confirmUpdate(){
-          this.modalComfirm = false
-          this.isEdit = false;
-        },
-          pushRouter(nameRouter){
-          axios.get("http://localhost:3000/",
-                            {
+    }
+  },
+created(){
+    axios
+            .get('http://localhost:3000/user/current', {
                                 headers: {
                                     'Authorization': 'Bearer '+ this.getLocal()
                                             }
                                 })
-                            .then((res) => {
-                                console.log(res)
-                                if(res.status == 200){
-                                    this.$router.replace({ name: nameRouter })
-                                }
-                            })
-                            .catch((err) => {
-                                if(err.request.status === 403 || err.request.status === 400){
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.prosthesisAccount = response.data
+                            
+                            axios
+                              .get('http://localhost:3000/case/filter?search='+this.prosthesisAccount.staff_ID+'&column=Staff.staff_ID')
+                              .then((response) => {
+                                                  if(response.status == 200){
+                                                      this.caseInfo = response.data
+                                                      console.log(this.caseInfo)
+                                                  }
+                                              })
+                              .catch((err) => {
+                                                  if(err.request.status === 403){
+                                                              this.$router.replace({ name: "forbidden" })
+                                                          }
+                                                  if(err.request.status === 404){
+                                                              this.$router.replace({ name: "notFound" })
+                                                          }
+                                                  console.log(err)
+                                              });
+                                              }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
                                     this.$router.replace({ name: "forbidden" })
                                 }
-                                if(err.request.status === 400){
+                        if(err.request.status === 404){
                                     this.$router.replace({ name: "notFound" })
                                 }
-                            })
-        },
-            getLocal() {
+                        console.log(err)
+                    }); 
+                    
+},
+computed:{
+  fullname: function () {
+    return this.prosthesisAccount['Staff.fname']+' '+this.prosthesisAccount['Staff.lname']
+  },
+  dob: function(){
+            return moment(this.prosthesisAccount['Staff.birth_date'], 'YYYY-MM-DD').format('YYYY-MM-DD')
+  },
+  ageP: function(){
+    let currentDate = new Date();
+    let birthDate = new Date(this.prosthesisAccount['Staff.birth_date']);
+    let difference = currentDate - birthDate;
+    let age = Math.floor(difference/31557600000);
+    return age
+  },
+},
+  methods: {
+          pushRouter(nameRouter){
+            this.$router.replace({ name: nameRouter })
+          },
+          getLocal() {
                 var txt = localStorage.getItem("user");
                 var obj = JSON.parse(txt);
                 return obj
-            }
-    }
+            },
+            confirmUpdate(){
+              let dataStaff = {
+                  staff_ID: this.prosthesisAccount['Staff.staff_ID'],
+                  fname: this.prosthesisAccount['Staff.fname'],
+                  lname: this.prosthesisAccount['Staff.lname'],
+                  address: this.prosthesisAccount['Staff.address'],
+                  birth_date: this.prosthesisAccount['Staff.birth_date'],
+                  email: this.prosthesisAccount['Staff.email'],
+                  phone_number: this.prosthesisAccount['Staff.phone_number'],
+                  sex: this.prosthesisAccount['Staff.sex'],
+                  department_ID: this.prosthesisAccount['Staff.department_ID']
+              }
+              console.log(dataStaff)
+              axios
+                  .patch('http://localhost:3000/staff/update/'+this.prosthesisAccount['Staff.staff_ID'], dataStaff)
+                  .then((response) => {
+                      if(response.status == 200){
+                        this.modalComfirm = false
+                        this.isEdit = false;
+                        console.log(this.caseInfo)
+                      }
+                  })
+                  .catch((err) => {
+                    console.log(err)
+                  });
+              
+                              
+            
+      },
   }
 }
 </script>
@@ -302,7 +320,7 @@ export default {
   border-radius: 4px;
   resize: none;
   width: 709px;
-  height: 186px;
+  height: 130px;
   box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
   outline: none;
 }

@@ -16,7 +16,7 @@
           <div class="field">
             <div class="column is-3 pl-0 pt-2">
             <div class="control">
-                <input class="input case-dis case-text" type="text" value="1030" disabled>
+                <input class="input case-dis case-text" type="text" v-model="caseInfo.case_ID">
               </div>
             </div>
             </div>
@@ -29,11 +29,8 @@
           </div>
           <div class="field-body">
             <div class="field">
-              <div v-if="!isEdit" class="control">
-                <textarea class="textarea case-dis case-text has-fixed-size" disabled></textarea>
-              </div>
-              <div v-else class="control">
-                <textarea class="textarea case-non-dis case-text has-fixed-size"></textarea>
+              <div class="control">
+                <textarea class="textarea case-dis case-text has-fixed-size" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="caseInfo.detail" :disabled="!isEdit ? true : false"></textarea>
               </div>
             </div>
           </div>
@@ -46,11 +43,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column is-6 pl-0">
-            <div v-if="!isEdit" class="control">
-                <input class="input case-dis case-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input case-non-dis case-text" type="text">
+              <div class="control">
+                <input class="input case-dis case-text" type="text" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="caseInfo['Claim_Type.claim']" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -69,14 +63,14 @@
       <div class="column">
 <!--        HN-->
         <div class="field is-horizontal">
-          <div class="field is-normal mt-2 mr-3">
+          <div class="field is-normal mt-2 ml-5 mr-3">
             <label class="label text-add has-text-justified ml-5 pl-2">HN : </label>
           </div>
         <div class="field-body">
           <div class="field">
             <div class="column is-2 pl-0 pt-1">
             <div class="control">
-                <input class="input case-text case-dis" type="text" disabled>
+                <input class="input case-text case-dis" type="text" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="caseInfo['Patient.hn']"  :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -85,18 +79,15 @@
 <!--          First Name-->
         <div class="field is-horizontal">
           <div class="column is-3">
-          <div class="field-label is-normal mr-3 mt-2">
+          <div class="field-label is-normal mr-3 mt-2 mx-5">
             <label class="label text-add">Firstname : </label>
           </div>
           </div>
         <div class="field-body">
           <div class="field">
             <div class="column pl-0 mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input case-dis case-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input case-non-dis case-text" type="text">
+            <div class="control">
+                <input class="input case-dis case-text" type="text" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="caseInfo['Patient.fname']" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -105,18 +96,15 @@
 <!--              Last Name-->
         <div class="field is-horizontal">
           <div class="column is-3">
-          <div class="field-label is-normal mr-3 mt-2">
+          <div class="field-label is-normal mr-3 mt-2 mx-5">
             <label class="label text-add" >Lastname : </label>
           </div>
           </div>
         <div class="field-body">
           <div class="field">
             <div class="column pl-0  mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input case-dis case-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input case-non-dis case-text" type="text" disabled>
+              <div  class="control">
+                <input class="input case-dis case-text" type="text" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="caseInfo['Patient.lname']" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -139,11 +127,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column mt-1 pr-0 pl-0">
-            <div v-if="!isEdit" class="control">
-                <input class="input case-text case-dis" type="text" value="123" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input case-text case-non-dis" type="text" value="123">
+            <div  class="control">
+                <input class="input case-text case-dis" type="text" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="caseInfo['Staff.staff_ID']" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -151,15 +136,15 @@
         </div>
     </div>
 <!--    button-->
-    <div v-if="!isEdit" class="column p-0 ">
+    <div class="column p-0 " v-if="!isEdit">
       <div class="columns is-pulled-right">
       <button @click="isEdit = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Edit</button>
       </div>
     </div>
-    <div v-else class="column p-0 ">
+    <div class="column p-0 " v-else>
       <div class="columns is-pulled-right">
-        <button @click="modalCancel = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
-        <button @click="modalComfirm = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
+      <button @click="modalCancel = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
+      <button @click="modalComfirm = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
       </div>
     </div>
 <!--    modal-->
@@ -197,7 +182,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="modalComfirm = false; isEdit = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="confirmUpdate()" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalComfirm = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -210,6 +195,7 @@
 
 </template>
 <script>
+import axios from "axios";
 export default {
   name: 'home',
   data() {
@@ -217,11 +203,57 @@ export default {
       isEdit: false,
       modalCancel: false,
       modalComfirm: false,
-      methods: {
-
-      }
+     caseInfo:{},
+     caseID:'',
     }
-  }
+  },
+        created() {
+            this.caseID = this.$route.params.case_ID;
+            this.getCase()
+            console.log(this.caseInfo)
+        },
+         methods: {
+          getCase() {
+            axios
+            .get('http://localhost:3000/case/read/'+this.caseID)
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.caseInfo = response.data
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                        if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                        console.log(err)
+                    }); 
+          },
+          confirmUpdate(){
+            axios
+            .patch('http://localhost:3000/case/update/'+this.caseID, this.caseInfo)
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.modalComfirm = false
+                          this.isEdit = false
+                        }
+                        
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                        if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                        console.log(err)
+                    }); 
+          }
+         }
 }
 </script>
 <style scoped>

@@ -2,7 +2,7 @@
   <div id="detail" class="box">
     <div class="columns">
       <div class="column is-4">
-        <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt">
+        <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt" v-on:keyup.enter="onEnter">
       </div>
       <div class="column is-1">
         <span class="mr-4 textHeader">Filter</span>
@@ -10,20 +10,20 @@
       <div class="column is-4">
         <div class="select is-rounded is-small" style="width: 280px">
           <select style="width: 280px" v-model="selectFilter">
-                <option value="Case ID">Case ID</option>
-                <option value="Firstname">Firstname</option>
-                <option value="Lastname">Lastname</option>
-                <option value="Details">Details</option>
-                <option value="Claim">Claim</option>
-                <option value="Status">Status</option>
-                <option value="Prosthesis">Prosthesis</option>
-                <option value="Hospital">Hospital</option>
+                <option value="case_ID">Case ID</option>
+                <option value="Patient.fname">Firstname</option>
+                <option value="Patient.lname">Lastname</option>
+                <option value="detail">Details</option>
+                <option value="Claim_Type.claim">Claim</option>
+                <option value="type">Status</option>
+                <option value="Staff.fname">Prosthesis</option>
+                <option value="Hospital_community.name">Hospital</option>
           </select>
         </div>
       </div>
       <div class="column is-3">
         <a @click="minusPage()"><img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4"></a>
-        <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/{{countPage}}</h1>
+        <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page+1}}/{{countPage}}</h1>
         <a @click="plusPage()"><img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4"></a>
       </div>
     </div>
@@ -38,21 +38,21 @@
         <th class="has-text-white">Claim</th>
         <th class="has-text-white">Status</th>
         <th class="has-text-white">Prosthesis</th>
-        <th class="has-text-white">Hospital</th>
+        <th v-show="!isAdd" class="has-text-white">Community</th>
       </tr>
       </thead>
-      <template v-for="(caseInfo, key) in caseInfo" >
-      <tbody v-if="caseInfo.isShare" :key="key">
+      <template v-for="(caseInfo, key) in visiblePage" >
+      <tbody  :key="key">
         <tr style="border-bottom: 1px solid #BA9657;">
-        <td  v-show="isAdd"><input v-model="caseInfo.isShare" class="checkbox" type="checkbox"></td>
-        <td>{{caseInfo.caseID}} </td>
-        <td>{{caseInfo.fname}}</td>
-        <td>{{caseInfo.lname}}</td>
-        <td>{{caseInfo.details}}</td>
-        <td>{{caseInfo.claim}}</td>
-        <td>{{caseInfo.status}}</td>
-        <td>{{caseInfo.prosthesis}}</td>
-        <td>{{caseInfo.hospital}}</td>
+        <td  v-show="isAdd"><input class="checkbox" type="checkbox" v-model="caseInfo.share"></td>
+        <td>{{caseInfo.case_ID}} </td>
+        <td>{{caseInfo['Patient.fname']}}</td>
+        <td>{{caseInfo['Patient.lname']}}</td>
+        <td>{{caseInfo.detail}}</td>
+        <td>{{caseInfo['Claim_Type.claim']}}</td>
+        <td>{{caseInfo.type}}</td>
+        <td>{{caseInfo['Staff.fname']}}</td>
+        <td v-show="!isAdd">{{caseInfo['Hospital_community.name']}}</td>
       </tr>
       </tbody>
       </template>
@@ -60,13 +60,13 @@
     </table>
     <div class="columns mr-5 mb-1 go-botton"  v-show="isAdd == false">
       <div class="column go-botton go-right">
-        <button @click="isAdd = true" class="button is-rounded"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Add Case</button>
+        <button @click="isAdd = true; getCase()" class="button is-rounded"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Add Case</button>
       </div>
     </div>
     <div class="columns mb-0 go-botton" v-show="isAdd">
       <div class="column go-botton go-right">
         <button @click="modalCancel = true" class="button is-rounded mr-5" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
-        <button @click="modalCancel = true" class="button is-rounded"  style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
+        <button @click="modalComfirm = true" class="button is-rounded"  style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
       </div>
     </div>
 
@@ -83,7 +83,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="modalCancel = false; isAdd = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="modalCancel = false; isAdd = false; updateShowPageCommu()" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalCancel = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -104,7 +104,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="modalComfirm = false; isAdd = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="addCommunity()" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalComfirm = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -116,71 +116,210 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'home',
   data() {
     return {
-      page: 1,
-      countPage: 10,
+      page: 0,
+      countPage: 2,
+      nextID: 9,
+      pageSize: 8,
       isAdd: false,
       modalCancel: false,
       modalComfirm: false,
-      prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
-      patients:[{hn:'1', fname:'Review', lname:'Vizz', lastAppointment:'01-01-2020', claim:'none', status:'none', prosthesis:'Mai'},
-        {hn:'2', fname:'Big', lname:'Boss', lastAppointment:'05-05-2020', claim:'none', status:'none', prosthesis:'Mai'}
-      ],
-      caseInfo:[
-        {
-          caseID:'1',
-          fname:'Big',
-          lname:'Boss',
-          details:'Breakup',
-          claim:'IDK',
-          status:'It\'s ok',
-          prosthesis:'Mai',
-          hospital:'KMITL',
-          isShare: true
-        },
-        {
-          caseID:'2',
-          fname:'Review',
-          lname:'Vizz',
-          details:'none',
-          claim:'none',
-          status:'none',
-          prosthesis:'Mai',
-          hospital:'KMITL',
-          isShare: true
-        }
-      ],
-      caseInfoAll:[
-        {caseID:'000001', fname:'ก้อน', lname:'เหินเวหา', detail:'เปลี่ยนรัด BK ข้างซ้าย', claim:'จ่ายตรง', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000002', fname:'พจน์', lname:'มีเท', detail:'จับแบบ AK ข้างซ้าย', claim:'ประกันสังคม', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000003', fname:'แปลก', lname:'แต่จริง', detail:'TCO', claim:'ข้าราชการ', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000004', fname:'ปลา', lname:'กระป๋อง', detail:'ลองBK ขวา', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000005', fname:'ประกัน', lname:'สูญสิ้นภัย', detail:'ลอง BK', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000006', fname:'สายใจ', lname:'สายไหม', detail:'นัดนำรองเท้ามาเสริม', claim:'ท.47', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000007', fname:'ลาย', lname:'ไทย', detail:'นัดรับ SMO', claim:'UC', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000008', fname:'ส่อ', lname:'ใช้ปืน', detail:'ซ่อมเท้า BK ขวา', claim:'ท.47', status:'old', prosthesis:'พาณินี'},
-        {caseID:'000009', fname:'ออมตัง', lname:'ไม่มีกิน', detail:'TCO', claim:'สวัสดิการท้องถิ่น', status:'new', prosthesis:'พาณินี'},
-        {caseID:'000010', fname:'พัดลม', lname:'ไม่มีใช้', detail:'จับแบบ BK แกนในข้างขวา', claim:'ท.47', status:'old', prosthesis:'พาณินี'}
-      ],
-      selectFilter: 'Case ID',
+      prosthesisAccount:{},
+      patients:[],
+      caseCommunity:[],
+      caseInfoAll:[],
+      selectFilter: 'case_ID',
       searchTxt: '',
-      methods: {
-      },
+      visiblePage: [],
+      arryOfShare:[]
+    }
+  }, mounted() {
+          this.getCommunity()
+        },
+        methods: {
+          getCommunity() {
+            axios
+            .get('http://localhost:3000/community/read')
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.caseCommunity = response.data
+                            this.updateShowPageCommu();
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                        if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                        console.log(err)
+                    }); 
+          },
+          getCase() {
+            console.log(this.arryOfShare)
+            axios
+            .get('http://localhost:3000/case/read')
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.caseInfoAll = response.data
+                            
+                            this.updateShowPageCase();
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                        if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                        console.log(err)
+                    }); 
+          },
+          addCommunity() {
+            let list = []
+            this.caseInfoAll.forEach((add) => {
+                if (add.share === true){
+                  list.push({
+                    case_ID: add.case_ID,
+                    community_ID: "000002",
+                    detail: add.detail,
+                    date: add.date,
+                    cost: "0",
+                    type: add.type,
+                    share: "1",
+                    hn: add.hn,
+                    claim_ID: add.claim_ID,
+                    staff_ID: add.staff_ID
+                  })
+                }
+              })
+              console.log('test')
+              console.log(list)
+            axios
+            .post('http://localhost:3000/community/load', {
+              communities: list
+            })
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.isAdd = false
+                            this.modalComfirm = false
+                            this.caseInfo = response.data
+                            this.getCommunity()
+                            axios
+                                .post('http://localhost:3000/community/load', {
+                                  communities: list
+                                })
+                                .then((response) => {
+                                            console.log(response)
+                                            if(response.status == 200){
+                                                this.isAdd = false
+                                                this.modalComfirm = false
+                                                this.caseInfo = response.data
+                                                this.getCommunity()       
+                                            }
+                                        })
+                                .catch((err) => {
+                                            console.log(err)
+                                        });   
+                        }
+                    })
+            .catch((err) => {
+                        console.log(err)
+                    }); 
+          },
           plusPage(){
-            if(this.page >= 1 && this.page < 10){
+           if(this.page >= 0 && this.page < this.countPage-1){
               this.page++
+              if(this.isAdd){
+                this.updateShowPageCase()
+              }
+              else{
+                this.updateShowPageCommu()
+              }
             }
+            
           },
           minusPage(){
-            if(this.page <= 10 && this.page > 1){
+            if(this.page <= this.countPage-1 && this.page > 0){
               this.page--
+              if(this.isAdd){
+                this.updateShowPageCase()
+              }
+              else{
+                this.updateShowPageCommu()
+              }
+            } 
+          },
+          updateShowPageCommu() {
+            this.countPage = Math.ceil(this.caseCommunity.length/this.pageSize)
+            this.visiblePage = this.caseCommunity.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize);
+          },
+          updateShowPageCase() {
+            this.countPage = Math.ceil(this.caseInfoAll.length/this.pageSize)
+            this.visiblePage = this.caseInfoAll.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize);
+          },
+          pushRouter(nameRouter){
+            this.$router.replace({ name: nameRouter })
+          },
+          getLocal() {
+                var txt = localStorage.getItem("user");
+                var obj = JSON.parse(txt);
+                return obj
+            },
+          onEnter: function() {
+            if(!this.isAdd){
+            axios
+            .get('http://localhost:3000/community/filter?search='+this.searchTxt+'&column='+this.selectFilter)
+                              .then((response) => {
+                                                  if(response.status == 200){
+                                                      this.caseCommunity = response.data
+                                                      this.countPage = Math.ceil(this.caseCommunity.length/this.pageSize)
+                                                      this.updateShowPageCommu();
+                                                      console.log(this.caseCommunity)
+                                                  }
+                                              })
+                              .catch((err) => {
+                                                  if(err.request.status === 403){
+                                                              this.$router.replace({ name: "forbidden" })
+                                                          }
+                                                  if(err.request.status === 404){
+                                                              this.$router.replace({ name: "notFound" })
+                                                          }
+                                                  console.log(err)
+                                              });
             }
-          }
-    }
-  }
+            else{
+              axios
+            .get('http://localhost:3000/case/filter?search='+this.searchTxt+'&column='+this.selectFilter)
+                              .then((response) => {
+                                                  if(response.status == 200){
+                                                      this.caseInfoAll = response.data
+                                                      this.countPage = Math.ceil(this.caseInfoAll.length/this.pageSize)
+                                                      this.updateShowPageCase();
+                                                      console.log(this.caseInfoAll)
+                                                  }
+                                              })
+                              .catch((err) => {
+                                                  if(err.request.status === 403){
+                                                              this.$router.replace({ name: "forbidden" })
+                                                          }
+                                                  if(err.request.status === 404){
+                                                              this.$router.replace({ name: "notFound" })
+                                                          }
+                                                  console.log(err)
+                                              });
+            }
+            },
+        }
 }
 </script>
 

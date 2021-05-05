@@ -16,9 +16,9 @@
            </div>
         <div class="field-body">
           <div class="field">
-            <div class="column is-4 pl-4 pt-4">
-            <div class="control">
-                <input class="input ml-5 patient-dis patient-text" type="text" value="12345" disabled>
+            <div class="column is-4 pl-5 pt-4">
+            <div class="control ml-2">
+                <input class="input ml-5 patient-dis patient-text" type="text" v-model=" patients.hn" disabled>
             </div>
             </div>
           </div>
@@ -34,11 +34,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column pl-0 mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input patient-dis patient-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+              <div  class="control">
+                <input class="input patient-dis patient-text" type="text"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model=" patients.fname" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -54,11 +51,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column pl-0  mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input patient-text patient-dis" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+              <div  class="control">
+                <input class="input patient-dis patient-text" type="text"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="patients.lname" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -76,7 +70,7 @@
           <div class="field">
             <div class="column pl-0 mt-3">
             <div class="control">
-                <input class="input patient-text patient-dis" type="text" disabled>
+                <input class="input patient-text patient-dis" type="text" v-model="patients.person_id">
               </div>
             </div>
             </div>
@@ -91,11 +85,8 @@
           </div>
           <div class="field-body">
             <div class="field">
-              <div v-if="!isEdit" class="control">
-                <textarea class="textarea patient-dis patient-text" disabled></textarea>
-              </div>
-              <div v-else class="control">
-                <textarea class="textarea patient-non-dis patient-text"></textarea>
+              <div class="control">
+                <textarea class="textarea patient-dis patient-text" v-model="patients.address"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' :disabled="!isEdit ? true : false"></textarea>
               </div>
             </div>
           </div>
@@ -108,11 +99,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column is-4 pl-3 pt-4 pr-0">
-            <div v-if="!isEdit" class="control">
-                <input class="input ml-5 patient-text patient-dis" type="date" disabled>
-            </div>
-              <div v-else class="control">
-                <input class="input ml-5 patient-non-dis patient-text" type="date">
+            <div class="control ml-3">
+                <input class="input ml-5 patient-dis patient-text" type="date" v-model="dob">
               </div>
             </div>
           </div>
@@ -128,8 +116,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column is-4 pl-5 pt-4 pr-6">
-            <div class="control pl-4">
-                <input class="input ml-2 patient-dis patient-text" type="text" value="19" disabled>
+            <div class="control pl-4  ml-3">
+                <input class="input ml-2 patient-dis patient-text" type="text" v-model="ageP" disabled>
             </div>
             </div>
           </div>
@@ -145,8 +133,8 @@
           <div class="field-body">
             <div class="field">
               <div class="column is-4 pl-5 pt-4 pr-6">
-                <div class="control pl-4">
-                  <input class="input ml-2 patient-dis patient-text" type="text" value="Male" disabled>
+                <div class="control pl-4  ml-3">
+                  <input class="input ml-2 patient-dis patient-text" type="text" v-model="patients.sex">
                 </div>
               </div>
             </div>
@@ -156,17 +144,14 @@
         <div class="field is-horizontal mb-0">
           <div class="column is-2 ml-4">
             <div class="field-label is-normal pl-0">
-              <label class="label text-add has-text-left">Phone Number: </label>
+              <label class="label text-add has-text-left">Phone Number:</label>
             </div>
           </div>
           <div class="field-body">
             <div class="field">
-              <div class="column is-4 pl-5 pt-4 pr-6">
-                <div v-if="!isEdit" class="control pl-4">
-                  <input class="input ml-2 patient-dis patient-text" type="text" value="" disabled>
-                </div>
-                <div v-else class="control pl-4">
-                  <input class="input ml-2 patient-non-dis patient-text" type="text" value="">
+              <div class="column is-4 pl-5 pt-4 ">
+                <div class="control pl-4  ml-3" >
+                  <input class="input ml-2 patient-dis patient-text" type="text"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="patients.phone_number" :disabled="!isEdit ? true : false">
                 </div>
               </div>
             </div>
@@ -176,17 +161,14 @@
         <div class="field is-horizontal mb-0">
           <div class="column is-3 ml-1">
           <div class="field-label is-normal mr-3 mt-2">
-            <label class="label text-add has-text-left pl-2">Nationality : </label>
+            <label class="label text-add has-text-left pl-2">Nationlity : </label>
           </div>
           </div>
         <div class="field-body">
           <div class="field">
             <div class="column pl-0 mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input patient-dis patient-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+              <div class="control">
+                <input class="input patient-dis patient-text" type="text"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="patients.nationlity" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -202,11 +184,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column pl-0 mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input patient-dis patient-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+              <div  class="control">
+                <input class="input patient-dis patient-text" type="text"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="patients.religion" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -222,11 +201,8 @@
         <div class="field-body">
           <div class="field">
             <div class="column pl-0 mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input patient-dis patient-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+              <div class="control">
+                <input class="input patient-dis patient-text" type="text"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="patients.occupation" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
@@ -242,24 +218,26 @@
         <div class="field-body">
           <div class="field">
             <div class="column pl-0 mt-3">
-            <div v-if="!isEdit" class="control">
-                <input class="input patient-dis patient-text" type="text" disabled>
-              </div>
-              <div v-else class="control">
-                <input class="input patient-non-dis patient-text" type="text">
+              <div  class="control">
+                <input class="input patient-dis patient-text" type="text"  :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="patients.office_name" :disabled="!isEdit ? true : false">
               </div>
             </div>
             </div>
           </div>
         </div>
 <!--              button-->
-        <div v-if="!isEdit" class="columns mt-5 is-pulled-right">
-          <button @click="isEdit = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Edit</button>
-        </div>
-        <div v-else class="columns mt-5 is-pulled-right">
-          <button @click="modalCancel = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
-          <button @click="modalComfirm = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
-        </div>
+
+       <div class="column p-0 m-5" v-if="!isEdit">
+      <div class="columns is-pulled-right">
+      <button @click="isEdit = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Edit</button>
+      </div>
+    </div>
+    <div class="column p-0 m-5" v-else>
+      <div class="columns is-pulled-right">
+      <button @click="modalCancel = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
+      <button @click="modalComfirm = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
+      </div>
+    </div>
       </div>
     </div>
     <div class="modal" :class="{'is-active': modalCancel}">
@@ -276,7 +254,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="modalCancel = false; isEdit = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="modalCancel = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalCancel = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -297,7 +275,7 @@
           </div>
           <div class="columns">
             <div class="column has-text-centered">
-              <button class="button is-rounded mr-4" @click="modalComfirm = false; isEdit = false" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
+              <button class="button is-rounded mr-4" @click="confirmUpdate()" style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Yes</button>
               <button class="button is-rounded ml-4" @click="modalComfirm = false" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">No</button>
             </div>
           </div>
@@ -308,15 +286,72 @@
   </div>
 </template>
 <script>
+import moment from 'moment'
+import axios from "axios";
 export default {
   name: 'home',
   data() {
     return {
       isEdit: false,
       modalCancel: false,
-      modalComfirm: false
+      modalComfirm: false,
+       patients:{},
+       hnP:'',
     }
-  }
+  },
+        created() {
+            this.hnP = this.$route.params.hn;
+            this.getPatients()
+            console.log(this.hnP)
+        },
+        computed:{
+          dob: function(){
+            return moment(this.patients.birth_date, 'YYYY-MM-DD').format('YYYY-MM-DD')
+          },
+          ageP: function(){
+            let currentDate = new Date();
+            let birthDate = new Date(this.patients.birth_date);
+            let difference = currentDate - birthDate;
+            let age = Math.floor(difference/31557600000);
+            return age
+          },
+        },
+         methods: {
+          getPatients() {
+            axios
+            .get('http://localhost:3000/patient/read/'+this.hnP)
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.patients = response.data
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
+                                    this.$router.replace({ name: "forbidden" })
+                                }
+                        if(err.request.status === 404){
+                                    this.$router.replace({ name: "notFound" })
+                                }
+                        console.log(err)
+                    }); 
+          },
+          confirmUpdate(){
+            axios
+            .patch('http://localhost:3000/patient/update/'+this.hnP, this.patients)
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.modalComfirm = false
+                            this.isEdit = false
+                        }
+                        
+                    })
+            .catch((err) => {
+                        console.log(err)
+                    }); 
+          }
+         }
 }
 </script>
 <style scoped>

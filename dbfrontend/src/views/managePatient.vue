@@ -2,7 +2,7 @@
                 <div id="detail" class="box">
               <div class="columns">
                 <div class="column is-4">
-                  <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt">
+                  <input id="search" class="input is-rounded is-small" type="text" placeholder="Search" v-model="searchTxt" v-on:keyup.enter="onEnter">
               </div>
               <div class="column is-1">
                   <span class="mr-4 textHeader">Filter</span>
@@ -10,23 +10,23 @@
                 <div class="column is-4">
                   <div class="select is-rounded is-small" style="width: 280px">
                     <select style="width: 280px" v-model="selectFilter">
-                      <option value="HN">HN</option>
-                      <option value="Firstname">Firstname</option>
-                      <option value="Lastname">Lastname</option>
-                      <option value="Address">Address</option>
-                      <option value="DateOfBirth">DateOfBirth</option>
-                      <option value="Age">Age</option>
-                      <option value="ID Card">ID Card</option>
-                      <option value="Nationality">Nationality</option>
-                      <option value="Religion">Religion</option>
-                      <option value="Occupation">Occupation</option>
-                      <option value="Office Name">Office Name</option>
+                      <option value="hn">HN</option>
+                      <option value="fname">Firstname</option>
+                      <option value="lname">Lastname</option>
+                      <option value="address">Address</option>
+                      <option value="birth_date">DateOfBirth</option>
+                      <option value="age">Age</option>
+                      <option value="person_id">ID Card</option>
+                      <option value="nationlity">Nationality</option>
+                      <option value="religion">Religion</option>
+                      <option value="occupation">Occupation</option>
+                      <option value="office_name">Office Name</option>
                     </select>
                   </div>
                 </div>
                 <div class="column is-3 ">
                   <a @click="minusPage()"><img :src="require('../assets/left.png')" style="display: inline-block" class="arrow mr-4"></a>
-                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page}}/{{countPage}}</h1>
+                  <h1 class="has-text-centered textHeader" style="display: inline-block">PAGE {{page+1}}/{{countPage}}</h1>
                   <a @click="plusPage()"><img :src="require('../assets/right.png')" style="display: inline-block" class="arrow ml-4"></a>
                 </div>
             </div>
@@ -34,32 +34,32 @@
                      <table class="table is-fullwidth fixed"  >
                <thead style="background-color:#BA9657;">
                   <tr>
-                     <th class="has-text-white">HN</th>
-                     <th class="has-text-white">Firstname</th>
-                     <th class="has-text-white">Lastname</th>
-                     <th class="has-text-white">Address</th>
-                     <th class="has-text-white">DateOfBirth</th>
-                     <th class="has-text-white">Age</th>
-                     <th class="has-text-white">ID Card</th>
-                     <th class="has-text-white">Nationality</th>
-                     <th class="has-text-white">Religion</th>
-                     <th class="has-text-white">Occupation</th>
-                     <th class="has-text-white">Office Name</th>
+                     <th class="has-text-white px-5">HN</th>
+                     <th class="has-text-white px-5">Firstname</th>
+                     <th class="has-text-white px-5">Lastname</th>
+                     <th class="has-text-white px-5">Address</th>
+                     <th class="has-text-white px-5">DateOfBirth</th>
+                     <th class="has-text-white px-5">Age</th>
+                     <th class="has-text-white px-5">ID Card</th>
+                     <th class="has-text-white px-5">Nationality</th>
+                     <th class="has-text-white px-5">Religion</th>
+                     <th class="has-text-white px-5">Occupation</th>
+                     <th class="has-text-white px-5">Office Name</th>
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in patients" :key="key">
+                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in visiblePage" :key="key" @click="$router.push({ name: 'editPatient',  params: { hn: patient.hn }})">
                      <td>{{patient.hn}}</td>
                      <td>{{patient.fname}}</td>
                      <td>{{patient.lname}}</td>
                      <td>{{patient.address}}</td>
-                     <td>{{patient.dob}}</td>
+                     <td>{{patient.birth_date.slice(0, 10)}}</td>
                      <td>{{patient.age}}</td>
-                     <td>{{patient.idCard}}</td>
-                     <td>{{patient.nationality}}</td>
+                     <td>{{patient.person_id}}</td>
+                     <td>{{patient.nationlity}}</td>
                      <td>{{patient.religion}}</td>
                      <td>{{patient.occupation}}</td>
-                     <td>{{patient.office}}</td>
+                     <td>{{patient.office_name}}</td>
                   </tr>
                   
                </tbody>
@@ -67,7 +67,7 @@
             </div>
                   <div class="columns mr-5 go-botton">
                     <div class="column go-botton go-right">
-                      <button class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657" @click="pushRouter('addPatient')">Add Patient</button>
+                      <button class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 24px; color: #E2D8C9; border-color: #BA9657" @click="pushRouter('addPatient')">Add Patient</button>
                     </div>
                   </div>
 
@@ -80,64 +80,90 @@ export default {
     name: 'home',
     data() {
       return {
-        page: 1,
-        countPage: 10,
-        prosthesisAccount:{id:'1', fname:'ReVue', lname:'Vizz', role:'WebFrontend'},
-        patients:[
-        {hn:'000001', fname:'ก้อน', lname:'เหินเวหา', address:'มกส.', dob:'04-05-44', age:'20', idCard:'4523900950236',nationality:'thai',religion:'thai',occupation:'KSU',office:'KSU'},
-        {hn:'000002', fname:'พจน์', lname:'มีเท', address:'มนพ.', dob:'01-08-44', age:'19', idCard:'1229975350236',nationality:'thai',religion:'thai',occupation:'NPU',office:'NPU'},
-        {hn:'000003', fname:'แปลก', lname:'แต่จริง', address:'มนร.', dob:'18-01-44', age:'20', idCard:'8459900950236',nationality:'thai',religion:'thai',occupation:'PNU',office:'PNU'},
-        {hn:'000004', fname:'ปลา', lname:'กระป๋อง', address:'มน.', dob:'26-05-44', age:'19', idCard:'1229900995136',nationality:'thai',religion:'thai',occupation:'NU',office:'NU'},
-        {hn:'000005', fname:'ประกัน', lname:'สูญสิ้นภัย', address:'มมส.', dob:'29-07-44', age:'20', idCard:'1229900974136',nationality:'thai',religion:'thai',occupation:'MSU',office:'MSU'},
-        {hn:'000006', fname:'สายใจ', lname:'สายไหม', address:'จุฬาฯ', dob:'16-03-44', age:'20', idCard:'9549900950236',nationality:'thai',religion:'thai',occupation:'CU',office:'CU'},
-        {hn:'000007', fname:'ลาย', lname:'ไทย', address:'มก.', dob:'30-05-44', age:'19', idCard:'121229900006',nationality:'thai',religion:'thai',occupation:'KU',office:'KU'},
-        {hn:'000008', fname:'ส่อ', lname:'ใช้ปืน', address:'มข.', dob:'11-12-44', age:'19', idCard:'1229789650236',nationality:'thai',religion:'thai',occupation:'KKU',office:'KKU'},
-        {hn:'000009', fname:'ออมตัง', lname:'ไม่มีกิน', address:'มช.', dob:'14-09-44', age:'19', idCard:'1229900950584',nationality:'thai',religion:'thai',occupation:'CMU',office:'CMU'},
-        {hn:'000010', fname:'พัดลม', lname:'ไม่มีใช้', address:'มทษ.', dob:'15-02-44', age:'20', idCard:'1229900635236',nationality:'thai',religion:'thai',occupation:'TSU',office:'TSU'}
-        ],
-        selectFilter: 'HN',
+        page: 0,
+        countPage: 2,
+        nextID: 9,
+        pageSize: 8,
+        prosthesisAccount:{},
+        patients:[],
+        selectFilter: 'hn',
         searchTxt: '',
-          plusPage(){
-            if(this.page >= 1 && this.page < 10){
-              this.page++
-            }
-          },
-          minusPage(){
-            if(this.page <= 10 && this.page > 1){
-              this.page--
-            }
-          },
-          pushRouter(nameRouter){
-          axios.get("http://localhost:3000/",
-                            {
-                                headers: {
-                                    'Authorization': 'Bearer '+ this.getLocal()
-                                            }
-                                })
-                            .then((res) => {
-                                console.log(res)
-                                if(res.status == 200){
-                                    this.$router.replace({ name: nameRouter })
-                                }
-                            })
-                            .catch((err) => {
-                                if(err.request.status === 403 || err.request.status === 400){
+        visiblePage: [],
+        }
+      }, mounted() {
+          this.getpatients()
+          this.updateShowPage()
+        },
+        methods: {
+          getpatients() {
+            axios
+            .get('http://localhost:3000/patient/read')
+            .then((response) => {
+                        console.log(response)
+                        if(response.status == 200){
+                            this.patients = response.data
+                            this.countPage = Math.ceil(this.patients.length/this.pageSize)
+                            this.updateShowPage();
+                        }
+                    })
+            .catch((err) => {
+                        if(err.request.status === 403){
                                     this.$router.replace({ name: "forbidden" })
                                 }
-                                if(err.request.status === 400){
+                        if(err.request.status === 404){
                                     this.$router.replace({ name: "notFound" })
                                 }
-                            })
-        },
-            getLocal() {
+                        console.log(err)
+                    }); 
+          },
+          plusPage(){
+           if(this.page >= 0 && this.page < this.countPage-1){
+              this.page++
+              this.updateShowPage();
+            }
+            
+          },
+          minusPage(){
+            if(this.page <= this.countPage-1 && this.page > 0){
+              this.page--
+              this.updateShowPage();
+            } 
+          },
+          updateShowPage() {
+            this.visiblePage = this.patients.slice(this.page * this.pageSize, (this.page * this.pageSize) + this.pageSize);
+          },
+           getLocal() {
                 var txt = localStorage.getItem("user");
                 var obj = JSON.parse(txt);
                 return obj
+            },
+          pushRouter(nameRouter){
+            this.$router.replace({ name: nameRouter })
+          },
+          onEnter: function() {
+            axios
+            .get('http://localhost:3000/patient/filter?search='+this.searchTxt+'&column='+this.selectFilter)
+                              .then((response) => {
+                                                  if(response.status == 200){
+                                                      this.patients = response.data
+                                                      this.countPage = Math.ceil(this.patients.length/this.pageSize)
+                                                      this.updateShowPage();
+                                                      console.log(this.patients)
+                                                  }
+                                              })
+                              .catch((err) => {
+                                                  if(err.request.status === 403){
+                                                              this.$router.replace({ name: "forbidden" })
+                                                          }
+                                                  if(err.request.status === 404){
+                                                              this.$router.replace({ name: "notFound" })
+                                                          }
+                                                  console.log(err)
+                                              });
+            this.updateShowPage()
             }
-
-        }
-      }
     }
+}
 
 </script>
 
