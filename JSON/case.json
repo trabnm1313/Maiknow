@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "case_ID": "000001",
+      "deatil": "เปลี่ยนรัด BK ข้างซ้าย",
+      "date": "2021-12-24",
+      "cost": 150,
+      "type": "new"
+    },
+    {
+      "case_ID": "000002",
+      "deatil": "จับแบบ AK ข้างซ้าย",
+      "date": "2021-12-01",
+      "cost": 250,
+      "type": "old"
+    },
+    {
+      "case_ID": "000003",
+      "deatil": "TCO",
+      "date": "2021-12-13",
+      "cost": 300,
+      "type": "new"
+    },
+    {
+      "case_ID": "000004",
+      "deatil": "ลองBK ขวา",
+      "date": "2021-12-29",
+      "cost": 400,
+      "type": "old"
+    },
+    {
+      "case_ID": "000005",
+      "deatil": "ลอง BK",
+      "date": "2021-12-15",
+      "cost": 150,
+      "type": "old"
+    },
+    {
+      "case_ID": "000006",
+      "deatil": "นัดนำรองเท้ามาเสริม",
+      "date": "2021-12-08",
+      "cost": 100,
+      "type": "old"
+    },
+    {
+      "case_ID": "000007",
+      "deatil": "นัดรับ SMO",
+      "date": "2021-12-17",
+      "cost": 500,
+      "type": "old"
+    },
+    {
+      "case_ID": "000008",
+      "deatil": "ซ่อมเท้า BK ขวา",
+      "date": "2021-12-22",
+      "cost": 250,
+      "type": "old"
+    },
+    {
+      "case_ID": "000009",
+      "deatil": "TCO",
+      "date": "2021-12-19",
+      "cost": 400,
+      "type": "new"
+    },
+    {
+      "case_ID": "000010",
+      "deatil": "จับแบบ BK แกนในข้างขวา",
+      "date": "2021-12-10",
+      "cost": 150,
+      "type": "new"
+    },
+    {
+      "case_ID": "000011",
+      "deatil": "รับ BK",
+      "date": "2021-12-13",
+      "cost": 150,
+      "type": "old"
+    },
+    {
+      "case_ID": "000012",
+      "deatil": "ปรับ AFO",
+      "date": "2021-12-12",
+      "cost": 300,
+      "type": "old"
+    },
+    {
+      "case_ID": "000013",
+      "deatil": "ลองTCO เบาหวาน",
+      "date": "2021-12-02",
+      "cost": 600,
+      "type": "new"
+    },
+    {
+      "case_ID": "000014",
+      "deatil": "TCO+รองเท้าสำเร็จรูป เบาหวาน",
+      "date": "2021-12-28",
+      "cost": 500,
+      "type": "old"
+    },
+    {
+      "case_ID": "000015",
+      "deatil": "นำรองเท้ามาให้สำหรับTCO",
+      "date": "2021-12-14",
+      "cost": 300,
+      "type": "new"
+    },
+    {
+      "case_ID": "000016",
+      "deatil": "นัดลอง BK แกนใน",
+      "date": "2021-12-03",
+      "cost": 250,
+      "type": "old"
+    },
+    {
+      "case_ID": "000017",
+      "deatil": "TCO",
+      "date": "2021-12-26",
+      "cost": 300,
+      "type": "old"
+    },
+    {
+      "case_ID": "000018",
+      "deatil": "Platfrom ข้างซ้าย",
+      "date": "2021-12-18",
+      "cost": 450,
+      "type": "new"
+    },
+    {
+      "case_ID": "000019",
+      "deatil": "BK แกนใน ข้างขวา",
+      "date": "2021-12-07",
+      "cost": 500,
+      "type": "new"
+    },
+    {
+      "case_ID": "000020",
+      "deatil": "ลอง+รับ BK ข้างซ้าย",
+      "date": "2021-12-12",
+      "cost": 1000,
+      "type": "old"
+    }
+  ]
+}
