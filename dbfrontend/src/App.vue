@@ -193,6 +193,7 @@ export default {
   }
   a:hover {
     background-color: #253D39 !important;
+    transition-duration: .3s;
     border-radius: 0px 50px 50px 0px;
     }
   .modal-card-body

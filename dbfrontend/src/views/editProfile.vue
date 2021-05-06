@@ -56,7 +56,7 @@
         </div>
         <div class="columns">
 <!--          dob-->
-          <div v-if="!isEdit" class="column is-half ml-5">
+          <div class="column is-half ml-5">
             <label class="profile-text" style="font-size: 24px;">D.O.B :</label>
             <input class="dob input profile-text profile-dis ml-2"  type="date" style="font-weight: bold;" v-model="dob" disabled>
           </div>

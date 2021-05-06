@@ -48,7 +48,7 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in visiblePage" :key="key" @click="$router.push({ name: 'editPatient',  params: { hn: patient.hn }})">
+                  <tr class="text-select" style="border-bottom: 1px solid #BA9657;" v-for="(patient, key) in visiblePage" :key="key" @click="$router.push({ name: 'editPatient',  params: { hn: patient.hn }})">
                      <td>{{patient.hn}}</td>
                      <td>{{patient.fname}}</td>
                      <td>{{patient.lname}}</td>
@@ -236,5 +236,9 @@ export default {
   td{
     border-bottom: 1px solid #BA9657;
   }
-
+.text-select:hover{
+    color: #385B56;
+    background: #dbc499;
+    transition-duration: .3s;
+  }
 </style>

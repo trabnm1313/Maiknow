@@ -44,7 +44,18 @@
           <div class="field">
             <div class="column is-6 pl-0">
               <div class="control">
-                <input class="input case-dis case-text" type="text" :style='{"background-color" : (isEdit ? "#FFF8EE" : "" )}' v-model="caseInfo['Claim_Type.claim']" :disabled="!isEdit ? true : false">
+                <input v-show="!isEdit" class="input case-dis case-text" type="text" v-model="caseInfo['Claim_Type.claim']" disabled>
+                <div v-show="isEdit" class="select ml-2 patient-text">
+                    <select v-model="caseInfo['Claim_Type.claim_ID']" style="background-color:#FFF8EE">
+                      <option value="000001">ข้าราชการ</option>
+                      <option value="000002">ประกันสังคม</option>
+                      <option value="000003">ท.74</option>
+                      <option value="000004">UC</option>
+                      <option value="000005">สวัสดิการท้องถิ่น</option>
+                      <option value="000006">จ่ายตรง</option>
+                    </select>
+                  </div>
+                
               </div>
             </div>
             </div>
@@ -136,12 +147,12 @@
         </div>
     </div>
 <!--    button-->
-    <div class="column p-0 " v-if="!isEdit">
+    <div class="column p-0 " v-if="!isEdit && staffID == '000137'">
       <div class="columns is-pulled-right">
       <button @click="isEdit = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Edit</button>
       </div>
     </div>
-    <div class="column p-0 " v-else>
+    <div class="column p-0 " v-else-if="isEdit && staffID == '000137'">
       <div class="columns is-pulled-right">
       <button @click="modalCancel = true" class="button is-rounded mr-3"  style="background-color: #BA9657;font-size: 20px;line-height: 25px; color: #E2D8C9; border-color: #BA9657">Cancel</button>
       <button @click="modalComfirm = true" class="button is-rounded" style="background-color: #253D39;font-size: 20px;line-height: 25px; color: #E2D8C9;border-color: #253D39">Comfirm</button>
@@ -205,10 +216,13 @@ export default {
       modalComfirm: false,
      caseInfo:{},
      caseID:'',
+     staffID:'',
+     prosthesisAccount:{}
     }
   },
         created() {
             this.caseID = this.$route.params.case_ID;
+            this.staffID = this.$route.params.staff_ID;
             this.getCase()
             console.log(this.caseInfo)
         },
@@ -292,4 +306,7 @@ export default {
   font-size: 18px;
   font-weight: bold;
 }
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #cfcfcf;
+  }
 </style>

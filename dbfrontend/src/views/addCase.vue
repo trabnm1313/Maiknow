@@ -44,7 +44,16 @@
           <div class="field">
             <div class="column is-6 pl-0">
             <div class="control">
-                <input class="input case-non-dis case-text" type="text" v-model="data.claim_ID">
+              <div class="select ml-2 patient-text">
+                    <select v-model="data.claim_ID" style="background-color:#FFF8EE">
+                      <option value="000001">ข้าราชการ</option>
+                      <option value="000002">ประกันสังคม</option>
+                      <option value="000003">ท.74</option>
+                      <option value="000004">UC</option>
+                      <option value="000005">สวัสดิการท้องถิ่น</option>
+                      <option value="000006">จ่ายตรง</option>
+                    </select>
+                  </div>
               </div>
             </div>
             </div>
@@ -168,7 +177,7 @@ export default {
       data: {
         case_ID: '',
         detail: '',
-        claim_ID: '',
+        claim_ID: '000001',
         staff_ID: '',
         hn: ''
       },
@@ -244,4 +253,7 @@ export default {
   font-size: 18px;
   font-weight: bold;
 }
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #cfcfcf;
+  }
 </style>

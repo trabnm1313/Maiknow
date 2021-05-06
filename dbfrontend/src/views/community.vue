@@ -17,7 +17,7 @@
                 <option value="Claim_Type.claim">Claim</option>
                 <option value="type">Status</option>
                 <option value="Staff.fname">Prosthesis</option>
-                <option value="Hospital_community.name">Hospital</option>
+                <option v-show="!isAdd" value="Hospital_community.name">Community</option>
           </select>
         </div>
       </div>
@@ -43,7 +43,7 @@
       </thead>
       <template v-for="(caseInfo, key) in visiblePage" >
       <tbody  :key="key">
-        <tr style="border-bottom: 1px solid #BA9657;">
+        <tr class="text-select" style="border-bottom: 1px solid #BA9657;">
         <td  v-show="isAdd"><input class="checkbox" type="checkbox" v-model="caseInfo.share"></td>
         <td>{{caseInfo.case_ID}} </td>
         <td>{{caseInfo['Patient.fname']}}</td>
@@ -184,10 +184,35 @@ export default {
                     }); 
           },
           addCommunity() {
-            let list = []
-            this.caseInfoAll.forEach((add) => {
+            let listdelete = []
+            this.visiblePage.forEach((add) => {
+                if (add.share === false){
+                  listdelete.push(
+                    add.case_ID
+                  )
+                }
+              })
+              console.log('test1')
+              console.log(listdelete)
+              axios({
+                    method: 'DELETE',
+                    url: 'http://localhost:3000/community/delete',
+                    data: {
+                      IDList:listdelete
+                    }
+                  })
+                  .then((res) => {
+                        console.log(res)
+                    })
+                  .catch((err) => {
+                              console.log(err)
+                          }); 
+              
+
+            let listadd = []
+            this.visiblePage.forEach((add) => {
                 if (add.share === true){
-                  list.push({
+                  listadd.push({
                     case_ID: add.case_ID,
                     community_ID: "000002",
                     detail: add.detail,
@@ -201,40 +226,74 @@ export default {
                   })
                 }
               })
-              console.log('test')
-              console.log(list)
+              console.log('test2')
+              console.log(listadd)
             axios
             .post('http://localhost:3000/community/load', {
-              communities: list
+              communities: listadd
+            })
+            .then((response) => {
+                        console.log(response)
+                        // if(response.status == 200){
+                        //     this.getCommunity()
+                        // }
+                    })
+            .catch((err) => {
+                        console.log(err)
+                    }); 
+
+            let listupdate = []
+            this.visiblePage.forEach((add) => {
+                if (add.share === true){
+                  listupdate.push({
+                    case_ID: add.case_ID,
+                    detail: add.detail,
+                    date: add.date,
+                    cost: "0",
+                    type: add.type,
+                    staff_ID: add.staff_ID,
+                    hn: add.hn,
+                    claim_ID: add.claim_ID,
+                    share: "1",
+                    register_ID:add.register_ID
+                  }
+                  )
+                }
+                else if(add.share === false){
+                  listupdate.push({
+                    case_ID: add.case_ID,
+                    detail: add.detail,
+                    date: add.date,
+                    cost: "0",
+                    type: add.type,
+                    staff_ID: add.staff_ID,
+                    hn: add.hn,
+                    claim_ID: add.claim_ID,
+                    share: "0",
+                    register_ID:add.register_ID
+                    })
+                }
+              })
+              console.log('test3')
+              console.log(listupdate)
+            axios
+            .post('http://localhost:3000/case/load', {
+              cases: listupdate
             })
             .then((response) => {
                         console.log(response)
                         if(response.status == 200){
                             this.isAdd = false
                             this.modalComfirm = false
-                            this.caseInfo = response.data
+                            this.getCase()
                             this.getCommunity()
-                            axios
-                                .post('http://localhost:3000/community/load', {
-                                  communities: list
-                                })
-                                .then((response) => {
-                                            console.log(response)
-                                            if(response.status == 200){
-                                                this.isAdd = false
-                                                this.modalComfirm = false
-                                                this.caseInfo = response.data
-                                                this.getCommunity()       
-                                            }
-                                        })
-                                .catch((err) => {
-                                            console.log(err)
-                                        });   
                         }
                     })
             .catch((err) => {
                         console.log(err)
                     }); 
+
+            
           },
           plusPage(){
            if(this.page >= 0 && this.page < this.countPage-1){
@@ -318,7 +377,7 @@ export default {
                                                   console.log(err)
                                               });
             }
-            },
+            }
         }
 }
 </script>
@@ -380,5 +439,9 @@ input::placeholder{
   text-align: center;
   color: #E2D8C9;
 }
-
+.text-select:hover{
+    color: #385B56;
+    background: #dbc499;
+    transition-duration: .3s;
+  }
 </style>

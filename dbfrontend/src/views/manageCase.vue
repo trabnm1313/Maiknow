@@ -10,8 +10,8 @@
                 <div class="column is-4">
                   <div class="select is-rounded is-small" style="width: 280px">
                     <select style="width: 280px" v-model="selectFilter">
-                      <option value="Patient.hn">HN</option>
-                      <option value="date">Last Appointment</option>
+                      <option value="case_ID">Case ID</option>
+                      <option value="detail">Detail</option>
                       <option value="Claim_Type.claim">Claim</option>
                       <option value="type">Status</option>
                       <option value="Staff.fname">Prosthesis</option>
@@ -35,7 +35,7 @@
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(caseInfo, key) in visiblePage" :key="key" @click="$router.push({ name: 'editCase',  params: { case_ID: caseInfo.case_ID }})">
+                  <tr class="text-select" style="border-bottom: 1px solid #BA9657;" v-for="(caseInfo, key) in visiblePage" :key="key" @click="$router.push({ name: 'editCase',  params: { case_ID: caseInfo.case_ID, staff_ID: caseInfo['Staff.staff_ID']}})">
                      <td>{{caseInfo.case_ID}}</td>
                      <td>{{caseInfo.detail}}</td>
                      <td>{{caseInfo['Claim_Type.claim']}}</td>
@@ -66,7 +66,7 @@ export default {
         prosthesisAccount:{},
         patients:[],
         caseInfo:[],
-        selectFilter: 'Patient.hn',
+        selectFilter: 'case_ID',
         searchTxt: '',
         visiblePage: [],
       }
@@ -199,5 +199,10 @@ export default {
   }
   td{
     border-bottom: 1px solid #BA9657;
+  }
+  .text-select:hover{
+    color: #385B56;
+    background: #dbc499;
+    transition-duration: .3s;
   }
 </style>

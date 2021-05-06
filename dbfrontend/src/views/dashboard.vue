@@ -29,17 +29,17 @@
                      <table class="table is-fullwidth">
                <thead style="background-color:#BA9657;">
                   <tr>
-                     <th class="has-text-white">HN</th>
-                     <th class="has-text-white">Firstname</th>
-                     <th class="has-text-white">Lastname</th>
-                     <th class="has-text-white">Last Appointment</th>
-                     <th class="has-text-white">Claim</th>
-                     <th class="has-text-white">Status</th>
-                     <th class="has-text-white">Prosthesis</th>
+                     <th class="has-text-white" @click="sortBy('Patient.hn')" >HN</th>
+                     <th class="has-text-white" @click="sortBy('Patient.fname')">Firstname</th>
+                     <th class="has-text-white" @click="sortBy('Patient.lname')">Lastname</th>
+                     <th class="has-text-white" @click="sortBy('date')">Last Appointment</th>
+                     <th class="has-text-white" @click="sortBy('Claim_Type.claim')">Claim</th>
+                     <th class="has-text-white" @click="sortBy('type')">Status</th>
+                     <th class="has-text-white" @click="sortBy('Staff.fname')">Prosthesis</th>
                   </tr>
                </thead>
                <tbody>
-                  <tr style="border-bottom: 1px solid #BA9657;" v-for="(caseP, key) in visiblePage" :key="key">
+                  <tr class="text-select" style="border-bottom: 1px solid #BA9657;" v-for="(caseP, key) in visiblePage" :key="key">
                      <td>{{caseP.hn}}</td>
                      <td>{{caseP['Patient.fname']}}</td>
                      <td>{{caseP['Patient.lname']}}</td>
@@ -78,6 +78,9 @@ export default {
       }, mounted() {
           this.getCase()
           this.updateShowPage()
+        },
+        computed:{
+
         },
         methods: {
           getCase() {
@@ -151,7 +154,19 @@ export default {
                                                   console.log(err)
                                               });
             this.updateShowPage()
-            }
+            },
+          // sortByName(){
+          //   function compare(a,b){
+          //       if(a.name < b.name){
+          //         return -1
+          //       }
+          //       if(a.name > b.name){
+          //         return 1
+          //       }
+          //       return 0
+          //     }
+          //     this.visiblePage.sort(compare)
+          //   },
         }
     }
 </script>
@@ -203,6 +218,11 @@ export default {
   }
   .go-right{
     text-align: right;
+  }
+  .text-select:hover{
+    color: #385B56;
+    background: #dbc499;
+    transition-duration: .3s;
   }
 
 </style>
